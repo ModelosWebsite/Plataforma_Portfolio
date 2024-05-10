@@ -31,7 +31,7 @@ class AdminController extends Controller
        
             if ($image = $request->file('image')) {
                 $destinationPath = 'image/';
-                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $profileImage = rand(2000, 3000) . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profileImage);
                 $data->img = $profileImage;
             }

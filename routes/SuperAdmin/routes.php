@@ -3,6 +3,7 @@
 use App\Http\Controllers\SuperAdmin\PacoteController;
 use App\Http\Controllers\SuperAdmin\RegisterCompanyController;
 use App\Http\Controllers\SuperAdmin\SuperAdminController;
+use App\Http\Controllers\SuperAdmin\TermosController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,9 @@ Route::controller(PacoteController::class)->prefix("/super/admin")->group(functi
     Route::get("/pacote/premium", "mainView")->name("super.admin.pacote.view");
     Route::post("/pacote/store", "store")->name("super.admin.pacote.store");
     Route::post("/pacote/actualizar/{id}", "updatePacote")->name("super.admin.pacote.update");
+});
+
+Route::controller(TermosController::class)->prefix("/super/admin")->group(function(){
+    Route::get("/politica", "privacyView")->name("super.privacy.view");
+    Route::post("/politica/save", "privacyStore")->name("super.privacy.store");
 });

@@ -11,13 +11,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item" style="background: rgb(20, 0, 151)">
-        <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Iniciar</span>
-        </a>
-    </li>
-
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{(Route::current()->getName() == "admin.index") ? "bg-white" : ""}}">
         <a class="nav-link {{(Route::current()->getName() == "admin.index") ? "text-primary" : ""}}" href="{{route("admin.index")}}">
@@ -74,6 +67,16 @@
                 <a class="collapse-item {{Route::current()->getName() == "anuncio.management.view.fundo" ? "text-primary" : ""}}" href="{{route("anuncio.management.view.fundo")}}">
                     <i class="fa fa-fw fa-tachometer-alt"></i>
                     <span>Imagens de Fundo</span>
+                </a>
+
+                {{-- <a class="collapse-item {{Route::current()->getName() == "admin.conditions.view" ? "text-primary" : ""}}" href="{{route("admin.conditions.view")}}">
+                    <i class="fa fa-fw fa-tachometer-alt"></i>
+                    <span>Termos e Condições</span>
+                </a> --}}
+
+                <a class="collapse-item {{Route::current()->getName() == "admin.config.view" ? "text-primary" : ""}}" href="{{route("admin.config.view")}}">
+                    <i class="fa fa-fw fa-tachometer-alt"></i>
+                    <span>Configurações</span>
                 </a>
 
                 <a class="collapse-item {{Route::current()->getName() == "admin.management.user.profile" ? "text-primary" : ""}}" href="{{route("admin.management.user.profile")}}">

@@ -4,9 +4,10 @@
 @include("components.navbar")
 @include("components.images")
 @include("components.color")
-  @if ((isset($pacotes->status)) === "premium")
+  @if (($pacotes->status) === "premium" and ($pacotes->pacote) === "WhatsApp")
     @include("components.pacote.whatsaApp")
   @endif
+
   <!-- ======= Hero Section ======= -->
   <div id="hero" class="hero route bg-image">
     <div class="overlay-itro"></div>
@@ -356,6 +357,15 @@
         <div class="col-sm-12">
           <div class="copyright-box">
             <p class="copyright">&copy; Copyright <a href="https://fortcodedev.com" target="_blank"><strong>Fort-Code</strong></a>. Direitos autorais reservados</p>
+            <!-- Button trigger modal termos de cprivacidades e condições-->
+            <a type="button" class="text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Politicas de Privacidade |  
+              @include("components.pacote.privacy")
+            </a>
+            <a type="button" class="text-white" data-bs-toggle="modal" data-bs-target="#conditions">
+              Termos e Condições  
+              @include("components.pacote.conditions")
+            </a>
           </div>
         </div>
       </div>

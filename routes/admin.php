@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ConditionsController;
+use App\Http\Controllers\Admin\ConfigSiteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -55,11 +57,21 @@ Route::middleware("auth")->controller(AdminController::class)->prefix("/admin/")
     //profile
     Route::get("perfi/", "profileUser")->name("admin.management.user.profile");
     Route::post("perfi/edit/{id}", "updateProfile")->name("admin.management.update.profile");
+});
 
+Route::middleware("auth")->controller(ConditionsController::class)->prefix("/admin/")->group(function(){
+    Route::get("termos/condições", "conditionsView")->name("admin.conditions.view");
+    Route::post("termos/condições/save", "conditionsCreate")->name("admin.conditions.create");
+    Route::put('/items/update-status', 'termoStatus')->name('items.updateStatus');
 });
 
 Route::controller(LoginController::class)->group(function(){
     Route::get("/login/view", "loginview")->name("anuncio.login.view");
     Route::post("/login", "login")->name("anuncio.login");
     Route::get("/sair", "logout")->name("anuncio.logout");
+});
+
+Route::middleware("auth")->controller(ConfigSiteController::class)->group(function(){
+    Route::get("/config/site", "configView")->name("admin.config.view");
+    Route::put("/config/status", "updateStatus")->name("admin.update.status.company");
 });

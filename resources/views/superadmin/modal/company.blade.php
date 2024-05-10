@@ -7,7 +7,7 @@
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{route("super.admin.register.company")}}" method="post">
+            <form id="company">
                 @csrf
                 <div class="form-group">
                     <label class="form-label">Nome da Empresa</label>
@@ -37,3 +37,28 @@
       </div>
     </div>
   </div>
+
+<script src="{{asset("datas/jquery.js")}}"></script>
+<script src="{{asset("datas/main.js")}}"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+<script>
+    $(document).ready(function(){
+        $('#company').on('submit', function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('super.admin.register.company') }}',
+                data: $('#company').serialize(),
+                success: function(response){
+                  Swal.fire({
+                    title: "Empresa Cadastrada",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 3000
+                  });
+                }
+            });
+        });
+    });
+</script>

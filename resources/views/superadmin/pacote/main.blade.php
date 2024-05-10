@@ -92,9 +92,6 @@
                                                                         </div>
                                                         
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="pacote">Telefone</label>
-                                                                            <input class="form-control" value="{{$pacote->telefone}}" type="text" name="telefone" placeholder="Insira número de telefone">
-                                                                        </div>
                                                         
                                                                         <div class="form-group">
                                                                             <input type="submit" class="btn btn-primary" value="Cadastrar">

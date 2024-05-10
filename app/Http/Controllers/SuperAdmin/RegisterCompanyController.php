@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\company;
+use App\Models\Termo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,14 +26,14 @@ class RegisterCompanyController extends Controller
             // Create token for company
             $tokenCompany = $validatedData['name']. rand(2000, 3000);
     
-            $company = new Company();
+            $company = new company();
             $company->companyname = $validatedData['name'];
             $company->companyemail = $validatedData['email'];
             $company->companynif = $validatedData['nif'];
             $company->companybusiness = $validatedData['type'];
             $company->companyhashtoken = $tokenCompany;
             $company->save();
-    
+
             $user = new User();
             $user->name = $validatedData['name'];
             $user->email = $validatedData['email'];
@@ -40,10 +41,10 @@ class RegisterCompanyController extends Controller
             $user->role = "Administrador";
             $user->company_id = $company->id;
             $user->save();
-    
+
             DB::commit();
     
-            return redirect()->back()->with("success", "Empresa Adicionada");
+            return response()->json(['message' => 'sucesso']);
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with("error", "Erro ao adicionar empresa: " . $th->getMessage());

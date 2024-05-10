@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Termo;
+use Illuminate\Http\Request;
+
+class ConditionsController extends Controller
+{
+    //chamar formulario
+    public function conditionsView(){
+        $company_id = auth()->user()->company_id;
+        $termos = Termo::where("company_id", $company_id)->get();
+        return view("sbadmin.conditions.main", compact("termos"));
+    }
+
+    //Cadastrar as conditions
+    public function conditionsCreate(Request $request){
+        try {
+
+            $company_id = auth()->user()->company_id;
+            $conditions = new Termo();
+
+            $conditions->privacy = $request->privacy;
+            $conditions->condition = $request->condition;
+            $conditions->company_id = $company_id;
+            $conditions->save();
+
+            if ($conditions) {
+                return redirect()->back()->with("success", "Termo Criado");
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with("error", "Campos Vazios");
+        }
+    }
+
+    public function termoStatus(Request $request)
+    {
+        $company_id = auth()->user()->company_id;
+        $item = Termo::where("company_id", $company_id)->first();
+        // Atualiza o estado baseado no valor do checkbox
+        $item->status = $request->input('status') ? 'active' : 'inactive';
+        $item->save();
+        
+        return redirect()->back()->with('success', 'Estado atualizado com sucesso!');
+    }
+
+    // public function setCookiePolicy(Request $request)
+    // {
+    //     // Verifica se o usuário aceitou a política de cookies
+    //     $accepted = $request->input('accepted', false);
+
+    //     // Define um cookie para armazenar a preferência do usuário em relação à política de cookies
+    //     Cookie::queue('cookie_policy_accepted', $accepted, 60 * 24 * 30); // Válido por 30 dias
+
+    //     // Redireciona de volta para a página anterior
+    //     return back();
+    // }
+}

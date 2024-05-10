@@ -41,6 +41,13 @@
             <span>Pacotes Premium</span>
         </a>
     </li>
+    <!-- Nav Item - Pacotes Premium -->
+    <li class="nav-item {{(Route::current()->getName() == "super.privacy.view") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "super.privacy.view") ? "text-primary" : ""}}" href="{{route("super.privacy.view")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Politicas de Privacidade</span>
+        </a>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{route("anuncio.logout")}}">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("companynif")->unique();
             $table->string("companybusiness");
             $table->string("companyhashtoken");
+            $table->enum("status", ["active", "inactive"])->default("inactive");
             $table->timestamps();
         });
     }

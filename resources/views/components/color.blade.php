@@ -4,6 +4,15 @@
         --color: {{$color->letra ?? "#127"}};
     }
 
+    .wrapper{
+        background: var(--background);
+    }
+
+    .buttons button{
+        background: #ffffff;
+        color: var(--background);
+    }
+
     #header.header-scrolled{
         background: var(--background);
     }

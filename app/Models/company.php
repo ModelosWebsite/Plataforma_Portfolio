@@ -18,4 +18,8 @@ class company extends Model
     {
         return $this->hasMany(pacote::class, 'company_id', 'id');
     }
+
+    public function terms() {
+        return $this->hasOne(Termo::class);
+    }
 }
