@@ -49,6 +49,14 @@
         </a>
     </li>
 
+    <!-- Nav Item - Pacotes Premium -->
+    <li class="nav-item {{(Route::current()->getName() == "super.admin.documentation.index") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "super.admin.documentation.index") ? "text-primary" : ""}}" href="{{route("super.admin.documentation.index")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Documentaçao</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{route("anuncio.logout")}}">
             <i class="fa fa-fw fa-tachometer-alt"></i>

@@ -67,8 +67,8 @@ class SiteController extends Controller
                 "footer" => $this->footer($company)
             ]);
         } else {
-            Alert::error('Oops', 'O site está indisponível no momento.');
-            return redirect()->route("site.status");
+            $name = ModelsCompany::where("companyhashtoken", $company)->first();
+            return view("disable.App", compact("name"));
         }
     }
     

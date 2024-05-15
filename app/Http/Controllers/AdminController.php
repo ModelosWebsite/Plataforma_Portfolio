@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{About,Color,contact,Fundo,hero,Project,Service,Skill, User};
+use App\Models\{About,Color,contact, documentation, Fundo,hero,Project,Service,Skill, User};
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,13 +11,19 @@ class AdminController extends Controller
     public function index(){
         $company_id = auth()->user()->company->id;
         $name = About::where("company_id", $company_id)->get();
+        
         return view("sbadmin.home", compact("name"));
     }
 
     public function heroview(){
         $company_id = auth()->user()->company->id;
+        $datas = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "INICIAL")->get();
         $hero = hero::where("company_id", $company_id)->get();
-        return view("sbadmin.section1", compact("hero"));
+        return view("sbadmin.section1", compact(
+            "hero", 
+            "datas",
+        ));
     }
 
     public function registerdatas(Request $request){
@@ -71,8 +77,10 @@ class AdminController extends Controller
     //Imformações das caracteristicas do site...
     public function infowhy(){
         $company_id = auth()->user()->company->id;
+        $projecto = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "PROJECTOS")->get();
         $infos = Project::where("company_id", $company_id)->get();
-        return view("sbadmin.projects", compact("infos"));
+        return view("sbadmin.projects", compact("infos", "projecto"));
     }
 
     public function editwhy($id){
@@ -103,8 +111,8 @@ class AdminController extends Controller
     public function storeinfowhy(Request $request){
         try {
             //code...
-            $company_id = auth()->user()->company->id;
-            $data = new Project();
+        $company_id = auth()->user()->company->id;
+        $data = new Project();
 
         $data->title = $request->title;
         $data->company_id = $company_id;
@@ -127,8 +135,10 @@ class AdminController extends Controller
     //Informações do footer Painel Admin
     public function footer(){
         $company_id = auth()->user()->company->id;
+        $rodape = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "RODAPE")->get();
         $footer = contact::where("company_id", $company_id)->get();
-        return view("sbadmin.footer", compact("footer"));
+        return view("sbadmin.footer", compact("footer", "rodape"));
     }
 
     public function contactStore(Request $request){
@@ -166,8 +176,10 @@ class AdminController extends Controller
     //Infromações sobre os detalhes
     public function detailview(){
         $skills = Skill::all();
+        $element = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "ELEMENTOS")->get();
 
-        return view("sbadmin.skill", compact("skills"));
+        return view("sbadmin.skill", compact("skills", "element"));
     }
 
     public function storeDetail(Request $request){
@@ -188,7 +200,7 @@ class AdminController extends Controller
         }
      }
      
-      public function actualizarDetalhes(Request $request, $id){
+    public function actualizarDetalhes(Request $request, $id){
           Skill::where(["id" => $id])->update([
               "level" => $request->level,
               "id" => $request->id,
@@ -197,10 +209,13 @@ class AdminController extends Controller
       }
 
      //Imformações sobre o site OU Sobre
-    public function about(){
+    
+     public function about(){
         $company_id = auth()->user()->company->id;
+        $databout = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "SOBRE")->get();
         $data = About::where("company_id", $company_id)->get();
-        return view("sbadmin.about", ["data" => $data]);
+        return view("sbadmin.about", compact("databout", "data"));
     }
 
     public function storeAbout(Request $request){
@@ -235,8 +250,10 @@ class AdminController extends Controller
     //services
     public function viewservice(){
         $company_id = auth()->user()->company->id;
+        $service = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "SERVIÇOS")->get();
         $data = Service::where("company_id", $company_id)->get();
-        return view("sbadmin.service", compact("data"));
+        return view("sbadmin.service", compact("data", "service"));
     }
 
     public function storeservice(Request $request){
@@ -275,8 +292,10 @@ class AdminController extends Controller
     //change color for the website
     public function colorview(){
         $company_id = auth()->user()->company->id;
+        $color = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "CORES")->get();
         $colors = Color::where("company_id", $company_id)->get();
-        return view("sbadmin.color", compact("colors"));
+        return view("sbadmin.color", compact("colors", "color"));
     }
 
     public function storecolor(Request $request){
@@ -307,8 +326,10 @@ class AdminController extends Controller
     //imagens de funddo
     public function imagebackground(){
         $company_id = auth()->user()->company->id;
+        $image = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "IMAGEM")->get();
         $fundo = Fundo::where("company_id", $company_id)->get();
-        return view("sbadmin.fundo", ["fundo" => $fundo]);
+        return view("sbadmin.fundo", compact("fundo", "image"));
     }
 
     public function imageactualizar(Request $request){
@@ -351,7 +372,9 @@ class AdminController extends Controller
     }
 
     public function profileUser(){
-        return view("sbadmin.profile.index");
+        $account = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
+        ->where("section", "CONTA")->get();
+        return view("sbadmin.profile.index", compact("account"));
     }
 
     public function updateProfile(Request $request){

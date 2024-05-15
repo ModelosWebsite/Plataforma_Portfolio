@@ -1,11 +1,12 @@
 @extends("layouts.App")
-@section("title", "Portfolio Site")
+@section("title", "Portfolio Site - " . $name->companyname)
 @section("content")
 @include("components.navbar")
 @include("components.images")
 @include("components.color")
-  @if (($pacotes->status) === "premium" and ($pacotes->pacote) === "WhatsApp")
-    @include("components.pacote.whatsaApp")
+
+  @if ($pacotes && $pacotes->status === "premium" && $pacotes->pacote === "WhatsApp")
+    @include("components.pacote.whatsapp")
   @endif
 
   <!-- ======= Hero Section ======= -->

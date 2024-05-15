@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Models\company;
-use App\Models\Termo;
-use App\Models\User;
+use App\Models\{company, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterCompanyController extends Controller
 {
@@ -48,6 +47,35 @@ class RegisterCompanyController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with("error", "Erro ao adicionar empresa: " . $th->getMessage());
+        }
+    }
+
+    public function deleteCompany($companyid){
+        $company = company::find($companyid);
+        $company->delete();
+        return redirect()->back();
+    }
+
+    public function companyUpdate(Request $request) {
+        DB::beginTransaction();
+        try {
+            
+            $company = company::find($request->id);
+            $tokenCompany = $request->name. rand(2000, 3000);
+            $company->companyname = $request->name;
+            $company->companyemail = $request->email;
+            $company->companynif = $request->nif;
+            $company->companybusiness = $request->type;
+            $company->companyhashtoken = $tokenCompany;
+            $company->update();
+
+            DB::commit();
+            Alert::success("Empresa Actualizada");
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th->getMessage());
+            return redirect()->back()->with("error", "Erro ao actualizar empresa: " . $th->getMessage());
         }
     }
     

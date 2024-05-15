@@ -39,7 +39,6 @@
                                             <th>Empresa</th>
                                             <th>Pacote</th>
                                             <th>Status</th>
-                                            <th>Contacto</th>
                                             <th>Acção</th>
                                         </thead>
                                         <tbody>
@@ -49,7 +48,6 @@
                                                     <td>{{$pacote->company->companyname}}</td>
                                                     <td>{{$pacote->pacote}}</td>
                                                     <td class=" text-capitalize">{{$pacote->status}}</td>
-                                                    <td>{{$pacote->telefone}}</td>
                                                     <td>
 
                                                         <!-- Button trigger modal -->
