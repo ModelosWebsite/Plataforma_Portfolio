@@ -82,7 +82,7 @@
       </div>
     </section><!-- End About Section -->
 
-    {{-- <div class="container-fluid px-3 px-md-3 px-lg-4">
+  <div class="container-fluid px-3 px-md-3 px-lg-4">
       <div class="position-relative">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -101,7 +101,7 @@
           </div>
         </div>
       </div>
-    </div> --}}
+    </div>
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services-mf pt-5 route">
@@ -112,9 +112,6 @@
               <h3 class="title-a">
                 Serviços
               </h3>
-              <p class="subtitle-a">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              </p>
               <div class="line-mf"></div>
             </div>
           </div>
@@ -213,9 +210,6 @@
               <h3 class="title-a">
                 Portfolio
               </h3>
-              <p class="subtitle-a">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              </p>
               <div class="line-mf"></div>
             </div>
           </div>
@@ -321,7 +315,7 @@
                           <li><a href=""><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
                         </ul>
 
-                        {{-- <div class="position-relative col-12 col-xl-6 anuncio-style" style="margin-top: 1rem;">
+                        <div class="position-relative col-12 col-xl-6 anuncio-style" style="margin-top: 1rem;">
                           <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                               @foreach ($apiArray as $anuncio)
@@ -338,7 +332,7 @@
                                 @endforeach
                             </div>
                           </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>

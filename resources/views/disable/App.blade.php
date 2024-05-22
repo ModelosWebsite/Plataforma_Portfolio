@@ -1,5 +1,5 @@
 @extends("layouts.App")
-@section("title", "$name->companyname - Site indisponivel")
+@section("title", "Site indisponivel")
 @section("content")
     <div class="d-flex justify-content-center" style="margin-top: 15rem;">
         <div class=" text-center text-uppercase">

@@ -45,16 +45,5 @@ class ConditionsController extends Controller
         
         return redirect()->back()->with('success', 'Estado atualizado com sucesso!');
     }
-
-    // public function setCookiePolicy(Request $request)
-    // {
-    //     // Verifica se o usuário aceitou a política de cookies
-    //     $accepted = $request->input('accepted', false);
-
-    //     // Define um cookie para armazenar a preferência do usuário em relação à política de cookies
-    //     Cookie::queue('cookie_policy_accepted', $accepted, 60 * 24 * 30); // Válido por 30 dias
-
-    //     // Redireciona de volta para a página anterior
-    //     return back();
-    // }
+    
 }

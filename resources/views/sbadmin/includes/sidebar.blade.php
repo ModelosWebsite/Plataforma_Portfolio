@@ -69,14 +69,18 @@
                     <span>Imagens de Fundo</span>
                 </a>
 
-                {{-- <a class="collapse-item {{Route::current()->getName() == "admin.conditions.view" ? "text-primary" : ""}}" href="{{route("admin.conditions.view")}}">
+                <a class="collapse-item {{Route::current()->getName() == "admin.panel.question" ? "text-primary" : ""}}" href="{{route("admin.panel.question")}}">
                     <i class="fa fa-fw fa-tachometer-alt"></i>
-                    <span>Termos e Condições</span>
-                </a> --}}
+                    <span>Perguntas Frequentes</span>
+                </a>
 
                 <a class="collapse-item {{Route::current()->getName() == "admin.config.view" ? "text-primary" : ""}}" href="{{route("admin.config.view")}}">
                     <i class="fa fa-fw fa-tachometer-alt"></i>
                     <span>Configurações</span>
+                </a>
+                <a class="collapse-item" href="#" data-toggle="modal" data-target="#help">
+                    <i class="fa fa-fw fa-tachometer-alt"></i>
+                    <span>Ajuda</span>
                 </a>
 
                 <a class="collapse-item {{Route::current()->getName() == "admin.management.user.profile" ? "text-primary" : ""}}" href="{{route("admin.management.user.profile")}}">

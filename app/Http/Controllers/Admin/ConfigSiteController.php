@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class ConfigSiteController extends Controller
 {
-    //open the page view config
     public function configView(){
         $config = Documentation::where("panel", "PAINEL DO ADMINISTRADOR")
         ->where("section", "CONFIGURAÇÕES")->get();

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class SiteController extends Controller
 {
@@ -36,9 +35,12 @@ class SiteController extends Controller
     
             $pacotes = Pacote::where("company_id", $data->id)->first();
             $phonenumber = Contact::where("company_id", $data->id)->first();
-    
+
+            $api = Http::post("http://karamba.ao/api/anuncios", ["key" => "wRYBszkOguGJDioyqwxcKEliVptArhIPsNLwqrLAomsUGnLoho"]);
+            $apiArray = $api->json();
+
             $termo = Termo::where("company_id", $data->id)->first();
-    
+            
             if ($termo && $termo->status === "active" && $termo->company_id == $data->id) {
                 $termos = $termo;
             } else {
@@ -62,6 +64,7 @@ class SiteController extends Controller
                 "phonenumber" => $phonenumber,
                 "data" => $data,
                 "termos" => $termos,
+                "apiArray" => $apiArray,
                 "imageHero" => $this->imageHero($company),
                 "start" => $this->start($company),
                 "footer" => $this->footer($company)

@@ -4,6 +4,7 @@
 @include("sbadmin.includes.sidebar")
 @include("sweetalert::alert")
 @include("sbadmin.documentation.color.App")
+@include("sbadmin.help.App")
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->

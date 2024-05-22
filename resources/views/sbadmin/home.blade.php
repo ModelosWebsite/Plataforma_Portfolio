@@ -2,7 +2,9 @@
 @section("title", "Painel Administrativo")
 @section("content")
 @include("sbadmin.includes.sidebar")
-@include("sbadmin.includes.modal.started")<!-- Content Wrapper -->
+@include("sbadmin.includes.modal.started")
+@include("sbadmin.help.App")
+<!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
     <div id="content">

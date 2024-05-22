@@ -3,6 +3,7 @@
 @section("content")
 @include("sweetalert::alert")
 @include("sbadmin.documentation.about.App")
+@include("sbadmin.help.App")
     {{-- side bar --}}
     @include("sbadmin.includes.sidebar")
 

@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //principal do panel admin
+    
     public function index(){
         $company_id = auth()->user()->company->id;
         $name = About::where("company_id", $company_id)->get();
-        
         return view("sbadmin.home", compact("name"));
     }
 
@@ -183,8 +182,7 @@ class AdminController extends Controller
     }
 
     public function storeDetail(Request $request){
-        try {
-            
+        try {           
           $company_id = auth()->user()->company->id;
           $skills = new Skill();
  
@@ -198,19 +196,18 @@ class AdminController extends Controller
           dd($th->getMessage());
           return redirect()->back()->with("error", "Não Pode adicionar");
         }
-     }
+    }
      
     public function actualizarDetalhes(Request $request, $id){
-          Skill::where(["id" => $id])->update([
-              "level" => $request->level,
-              "id" => $request->id,
-          ]);
-          return redirect()->back()->with("success", "Elemento actualizado");
-      }
+        Skill::where(["id" => $id])->update([
+            "level" => $request->level,
+            "id" => $request->id,
+        ]);
+        return redirect()->back()->with("success", "Elemento actualizado");
+    }
 
-     //Imformações sobre o site OU Sobre
-    
-     public function about(){
+    //Imformações sobre o site OU Sobre
+    public function about(){
         $company_id = auth()->user()->company->id;
         $databout = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
         ->where("section", "SOBRE")->get();
