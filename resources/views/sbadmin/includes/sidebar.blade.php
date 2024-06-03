@@ -19,7 +19,23 @@
         </a>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Premium -->
+    <li class="nav-item {{(Route::current()->getName() == "loja.online") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "loja.online") ? "text-primary" : ""}}" href="{{route("loja.online")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Elementos Premium</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Premium -->
+    <li class="nav-item {{(Route::current()->getName() == "admin.portal.pb") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "admin.portal.pb") ? "text-primary" : ""}}" href="{{route("admin.portal.pb")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Portal PB</span>
+        </a>
+    </li
+
+    <!-- Nav Item - Pages Collapse Definições -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -59,6 +75,11 @@
                     <span>Habilidades e Skill</span>
                 </a>
 
+                <a class="collapse-item {{(Route::current()->getName() == "admin.hability.view") ? "text-primary" : ""}}" href="{{route("admin.hability.view")}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Habilidades</span>
+                </a>
+
                 <a class="collapse-item {{Route::current()->getName() == "anuncio.management.view.color" ? "text-primary" : ""}}" href="{{route("anuncio.management.view.color")}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cores</span>
@@ -78,6 +99,7 @@
                     <i class="fa fa-fw fa-tachometer-alt"></i>
                     <span>Configurações</span>
                 </a>
+
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#help">
                     <i class="fa fa-fw fa-tachometer-alt"></i>
                     <span>Ajuda</span>

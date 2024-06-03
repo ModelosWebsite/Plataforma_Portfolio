@@ -38,10 +38,20 @@
                   <div class="row">
                     <div class="col-sm-6 col-md-5">
                         @foreach ($hero as $item)  
-                            <div class="about-img" style="width: 10rem;"> 
-                                <img src="{{asset('/image/'.$item->img)}}" class="img-fluid rounded b-shadow-a" alt="">
+                            <div class="about-img"> 
+                                <img style="border-radius: 12rem;width: 13rem; height: 13rem;" src="{{asset('/image/'.$item->img)}}" class="img-fluid b-shadow-a" alt="">
                             </div>
                         @endforeach
+                    </div>
+                    <div class="skill-mf">
+                      <p class="title-s">Habilidades</p>
+
+                      @foreach ($habilitys as $item)                          
+                        <span>{{$item->hability}}</span> <span class="pull-right">{{$item->level}}%</span>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" style="width: {{$item->level}}%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      @endforeach
                     </div>
                     <div class="col-sm-6 col-md-7">
                       <div class="about-info">

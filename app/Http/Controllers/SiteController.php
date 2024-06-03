@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SendEmail;
 use App\Models\{About, Color, contact, Fundo, hero, pacote, Service,
-    company as ModelsCompany, Project, Skill, Termo};
+    company as ModelsCompany, Habilidade, Project, Skill, Termo};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -35,6 +35,7 @@ class SiteController extends Controller
     
             $pacotes = Pacote::where("company_id", $data->id)->first();
             $phonenumber = Contact::where("company_id", $data->id)->first();
+            $habilitys = Habilidade::where("company_id", $data->id)->get();
 
             $api = Http::post("http://karamba.ao/api/anuncios", ["key" => "wRYBszkOguGJDioyqwxcKEliVptArhIPsNLwqrLAomsUGnLoho"]);
             $apiArray = $api->json();
@@ -65,6 +66,7 @@ class SiteController extends Controller
                 "data" => $data,
                 "termos" => $termos,
                 "apiArray" => $apiArray,
+                "habilitys" => $habilitys,
                 "imageHero" => $this->imageHero($company),
                 "start" => $this->start($company),
                 "footer" => $this->footer($company)
@@ -109,6 +111,6 @@ class SiteController extends Controller
     }
 
     public function senha(){
-        return Hash::make("admin@gmail.com");
+        return Hash::make("superadmin");
     }
 }

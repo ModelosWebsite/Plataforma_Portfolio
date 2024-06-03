@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Admin\ConditionsController;
 use App\Http\Controllers\Admin\ConfigSiteController;
+use App\Http\Controllers\Admin\HabilidadeController;
+use App\Http\Controllers\Admin\PortalPbCOntroller;
 use App\Http\Controllers\Admin\QuestionControll;
+use App\Http\Controllers\Admin\ShoopingController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +77,20 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
 
     Route::controller(QuestionControll::class)->group(function(){
         Route::get("/perguntas/frequentes", "index")->name("admin.panel.question");
+    });
+
+    Route::controller(ShoopingController::class)->group(function(){
+        Route::get("/elementos/premium", "index")->name("loja.online");
+        Route::get("/add/cart/{id}", "addCart")->name("loja.add.cart");
+    });
+
+    Route::controller(PortalPbCOntroller::class)->group(function(){
+        Route::get("/portal/pb", "index")->name("admin.portal.pb");
+    });
+
+    Route::controller(HabilidadeController::class)->group(function(){
+        Route::get("/habilidades/ver", "habilityview")->name("admin.hability.view");
+        Route::post("/criar/habilidade", "habilityCriar")->name("admin.hability.criar");
     });
 });
 
