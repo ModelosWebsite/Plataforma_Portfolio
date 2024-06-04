@@ -82,6 +82,7 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
     Route::controller(ShoopingController::class)->group(function(){
         Route::get("/elementos/premium", "index")->name("loja.online");
         Route::get("/add/cart/{id}", "addCart")->name("loja.add.cart");
+        Route::get("/lista/Carrinho/", "getTotalCart")->name("loja.get.cart.total");
     });
 
     Route::controller(PortalPbCOntroller::class)->group(function(){

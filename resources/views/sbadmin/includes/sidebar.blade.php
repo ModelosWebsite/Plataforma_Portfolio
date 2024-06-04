@@ -72,7 +72,7 @@
 
                 <a class="collapse-item {{(Route::current()->getName() == "admin.detail") ? "text-primary" : ""}}" href="{{route("admin.detail")}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Habilidades e Skill</span>
+                    <span>Elementos Website</span>
                 </a>
 
                 <a class="collapse-item {{(Route::current()->getName() == "admin.hability.view") ? "text-primary" : ""}}" href="{{route("admin.hability.view")}}">

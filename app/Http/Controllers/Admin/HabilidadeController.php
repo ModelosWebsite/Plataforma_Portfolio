@@ -16,7 +16,6 @@ class HabilidadeController extends Controller
 
     public function habilityCriar(Request $request)
     {
-
         try {
 
             $company_id = auth()->user()->company->id;
@@ -28,7 +27,6 @@ class HabilidadeController extends Controller
 
             return redirect()->back()->with('success', 'Habilidade Criada');
         } catch (\Throwable $th) {
-            //throw $th;
         }
     }
 }
