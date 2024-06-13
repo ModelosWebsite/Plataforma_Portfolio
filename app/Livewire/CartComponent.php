@@ -167,11 +167,18 @@ class CartComponent extends Component
         ->post("https://kytutes.com/api/deliveries",$data);
 
         $result  = collect(json_decode($response));
+        
+        if ($result) {
+            session()->put("idDelivery", $result['reference']);
+        }
+
         $this->alert('success', 'Encomenda Finalizada');
-        return redirect()->back();
+        return redirect()->route("delivery.status",[
+            $result['reference']
+        ]);
 
         } catch (\Throwable $th) {
-            dd($th->getMessage());
+            
         }
     }
 }

@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\HabilidadeController;
 use App\Http\Controllers\Admin\PortalPbCOntroller;
 use App\Http\Controllers\Admin\QuestionControll;
 use App\Http\Controllers\Admin\ShoopingController;
+use App\Http\Controllers\Admin\StatusDeliveryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Livewire\Site\DeliveryStatusComponent;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware("auth")->prefix("/admin/")->group(function(){
@@ -92,6 +94,13 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
     Route::controller(HabilidadeController::class)->group(function(){
         Route::get("/habilidades/ver", "habilityview")->name("admin.hability.view");
         Route::post("/criar/habilidade", "habilityCriar")->name("admin.hability.criar");
+    });
+
+    Route::get("/encomenda/estado/{id}", DeliveryStatusComponent::class)->name("delivery.status");
+
+    //Verificar estado do pedido
+    Route::controller(StatusDeliveryController::class)->group(function(){
+        Route::get("/delivery/status", "index")->name("plataform.portfolio.admin.delivery.status");
     });
 });
 

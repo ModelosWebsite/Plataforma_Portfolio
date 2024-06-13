@@ -28,6 +28,14 @@
     </li>
 
     <!-- Nav Item - Premium -->
+    <li class="nav-item {{(Route::current()->getName() == "plataform.portfolio.admin.delivery.status") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "plataform.portfolio.admin.delivery.status") ? "text-primary" : ""}}" href="{{route("plataform.portfolio.admin.delivery.status")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Estado da Encomenda</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Premium -->
     <li class="nav-item {{(Route::current()->getName() == "admin.portal.pb") ? "bg-white" : ""}}">
         <a class="nav-link {{(Route::current()->getName() == "admin.portal.pb") ? "text-primary" : ""}}" href="{{route("admin.portal.pb")}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
