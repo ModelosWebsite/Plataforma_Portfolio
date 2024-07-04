@@ -35,13 +35,21 @@
         </a>
     </li>
 
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item {{(Route::current()->getName() == "plataform.portfolio.admin.delivery.list") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "plataform.portfolio.admin.delivery.list") ? "text-primary" : ""}}" href="{{route("plataform.portfolio.admin.delivery.list")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Controle Encomendas</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Premium -->
-    <li class="nav-item {{(Route::current()->getName() == "admin.portal.pb") ? "bg-white" : ""}}">
-        <a class="nav-link {{(Route::current()->getName() == "admin.portal.pb") ? "text-primary" : ""}}" href="{{route("admin.portal.pb")}}">
+    <li class="nav-item">
+        <a class="nav-link" href="https://kytutes.com/auth/login" target="_blank">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Portal PB</span>
         </a>
-    </li
+    </li>
 
     <!-- Nav Item - Pages Collapse Definições -->
     <li class="nav-item">

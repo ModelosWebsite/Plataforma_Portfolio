@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\company;
+use App\Models\GenerateImage;
 use App\Models\pacote;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,14 @@ class PacoteController extends Controller
 {
     //main page elements premium
     public function mainView(){
-        $pacotes = pacote::all();
-        $companies = company::all();
+        $pacotes = pacote::get();
+        $packges = GenerateImage::get();
+        $companies = company::get();
         return view("superadmin.pacote.main", 
         [
             "companies" => $companies,
-            "pacotes" => $pacotes
+            "pacotes" => $pacotes,
+            "packges" => $packges,
         ]);
     }
 
@@ -24,9 +27,11 @@ class PacoteController extends Controller
     public function store(Request $request){
         try {
             $pacote = new pacote();
+            $packges = GenerateImage::find($request->packgeid);
 
-            $pacote->pacote = $request->pacote;
+            $pacote->pacote = $packges->packgename;
             $pacote->company_id = $request->company_id;
+            $pacote->generate_images_id = $request->packgeid;
 
             $pacote->save();
             return redirect()->back()->with("success", "Elemento Adicionado");

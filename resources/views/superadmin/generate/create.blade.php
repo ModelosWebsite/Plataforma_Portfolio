@@ -15,18 +15,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Categoria Pacote</label>
-                    <select name="pacote_id" class="form-control">
-                        <option selected disabled>Selecione uma categoria de imagem</option>
-                        @if ($categoryPacote)
-                            @foreach ($categoryPacote as $categoryPacot)       
-                                <option value="{{$categoryPacot->id}}">{{$categoryPacot->pacote}}</option>
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <label class="form-label">Quantidade</label>
                     <input type="text" name="qtd" class="form-control" placeholder="Insira a quantidade de imagens a serem geradas...">
                 </div>

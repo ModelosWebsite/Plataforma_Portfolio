@@ -82,12 +82,12 @@
                                                              <div class="">
                                                                  <div class="form-group">
                                                                      <label class="form-label">Escreva a sua Politica de privacidade</label>
-                                                                     <textarea name="privacy" class="form-control" placeholder="Insira uma descrição...."></textarea>
+                                                                     <textarea name="privacity" class="form-control" placeholder="Insira uma descrição...."></textarea>
                                                                  </div>
                                 
                                                                  <div class="form-group">
                                                                      <label class="form-label">Escreva o seu Termo de Condições</label>
-                                                                     <textarea name="condition" class="form-control" placeholder="Insira uma descrição...."></textarea>
+                                                                     <textarea name="term" class="form-control" placeholder="Insira uma descrição...."></textarea>
                                                                  </div>
                                                              </div>
                                                              <style>

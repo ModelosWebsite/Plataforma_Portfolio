@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="col-xl-12">
                                     @foreach ($termos as $termo)
-                                        <p>{{$termo->privacy}}</p>
+                                        <p>{{$termo->privacity}}</p>
                                     @endforeach
                                 </div>
                             </div>

@@ -98,14 +98,14 @@
                                                         <div class="col-12 col-md-12">
                                                             <div class="form-group">
                                                                 <label class="form-label">Escreva a sua Politica de privacidade</label>
-                                                                <textarea name="privacy" class="form-control" cols="50" rows="10" placeholder="Insira uma descrição...."></textarea>
+                                                                <textarea name="privacity" class="form-control" cols="50" rows="10" placeholder="Insira uma descrição...."></textarea>
                                                             </div>
                                                         </div>
                 
                                                         <div class="col-12 col-md-12">
                                                         <div class="form-group">
                                                             <label class="form-label">Escreva o seu Termo de Condições</label>
-                                                            <textarea name="condition" class="form-control" cols="50" rows="10" placeholder="Insira uma descrição...."></textarea>
+                                                            <textarea name="term" class="form-control" cols="50" rows="10" placeholder="Insira uma descrição...."></textarea>
                                                         </div>
                                                     </div>
                 

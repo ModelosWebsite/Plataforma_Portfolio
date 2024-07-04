@@ -89,4 +89,8 @@
     #preloader:before {
         border-top: 6px solid var(--background);
     }
+
+    .skill-mf .progress .progress-bar{
+        background: var(--background);
+    }
 </style>

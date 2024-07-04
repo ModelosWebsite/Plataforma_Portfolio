@@ -14,11 +14,18 @@ class pacote extends Model
     protected $fillable = [
         "pacote",
         "status",
-        "company_id"
+        "company_id",
+        "generate_images_id"
     ];
 
     public function company()
     {
         return $this->belongsTo(company::class);
     }
+
+    public function package()
+    {
+        return $this->belongsTo(GenerateImage::class);
+    }
+    
 }

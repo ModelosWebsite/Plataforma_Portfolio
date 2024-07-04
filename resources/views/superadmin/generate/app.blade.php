@@ -1,5 +1,5 @@
 @extends("layouts.index")
-@section("title", "IA Pacotes - Painel SuperAdmin")
+@section("title", "Pacotes Premium - Painel SuperAdmin")
 @section("content")
 @include("sweetalert::alert")
     {{-- side bar --}}
@@ -19,7 +19,7 @@
                                 class="card-header bg-primary py-3 flex-row align-items-center justify-content-between col-xl-12">
                                 <div class="col-xl-12 d-flex justify-content-between">
                                     <div>
-                                        <h4 class="m-0 font-weight-bold text-white">Pacotes IA Generate</h4>
+                                        <h4 class="m-0 font-weight-bold text-white">Pacotes Premium</h4>
                                     </div>
                                     <div>
                                         <!-- Button trigger modal -->

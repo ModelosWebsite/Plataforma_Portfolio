@@ -48,6 +48,8 @@
                                             <option value="Hero">Inicial</option>
                                             <option value="Start">Start</option>
                                             <option value="Footer">Rodápe</option>
+                                            <option value="Shopping">Loja</option>
+                                            <option value="ShoppingCart">Carrinho</option>
                                         </select>
                                     </div>
 

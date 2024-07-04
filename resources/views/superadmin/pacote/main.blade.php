@@ -35,7 +35,6 @@
                                 <div class="col-xl-12">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead class="bg-primary text-white">
-                                            <th>#</th>
                                             <th>Empresa</th>
                                             <th>Pacote</th>
                                             <th>Status</th>
@@ -44,7 +43,6 @@
                                         <tbody>
                                             @foreach ($pacotes as $pacote)
                                                <tr>
-                                                    <td>{{$pacote->id}}</td>
                                                     <td>{{$pacote->company->companyname}}</td>
                                                     <td>{{$pacote->pacote}}</td>
                                                     <td class=" text-capitalize">{{$pacote->status}}</td>

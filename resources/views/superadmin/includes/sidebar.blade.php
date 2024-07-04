@@ -41,6 +41,7 @@
             <span>Pacotes Premium</span>
         </a>
     </li>
+    
     <!-- Nav Item - Pacotes Premium -->
     <li class="nav-item {{(Route::current()->getName() == "super.privacy.view") ? "bg-white" : ""}}">
         <a class="nav-link {{(Route::current()->getName() == "super.privacy.view") ? "text-primary" : ""}}" href="{{route("super.privacy.view")}}">
@@ -61,7 +62,15 @@
     <li class="nav-item {{(Route::current()->getName() == "super.admin.generate.image.index") ? "bg-white" : ""}}">
         <a class="nav-link {{(Route::current()->getName() == "super.admin.generate.image.index") ? "text-primary" : ""}}" href="{{route("super.admin.generate.image.index")}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Pacotes Imagem</span>
+            <span>Pacotes Premium</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Pacotes Premium -->
+    <li class="nav-item {{(Route::current()->getName() == "super.admin.visitor.index") ? "bg-white" : ""}}">
+        <a class="nav-link {{(Route::current()->getName() == "super.admin.visitor.index") ? "text-primary" : ""}}" href="{{route("super.admin.visitor.index")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Metricas</span>
         </a>
     </li>
 

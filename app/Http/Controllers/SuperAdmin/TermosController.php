@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Termo;
+use App\Models\Termpb;
 use Illuminate\Http\Request;
 
 class TermosController extends Controller
 {
     public function privacyView(){
-        $termos = Termo::where("company_id", 0)->get();
+        $termos = Termpb::get();
         return view("superadmin.termos.privacy", compact("termos"));
     }
 
     public function privacyStore(Request $request){
         try {
-            $termos = new Termo();
+            $termos = new Termpb();
 
-            $termos->condition = $request->condition;
-            $termos->privacy = $request->privacy;
+            $termos->term = $request->term;
+            $termos->privacity = $request->privacity;
 
             $termos->save();
 

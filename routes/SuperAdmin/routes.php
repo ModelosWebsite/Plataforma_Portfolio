@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SuperAdmin\{DocumentationController, GenerateImageController, PacoteController, UserController};
+use App\Http\Controllers\SuperAdmin\{DocumentationController, GenerateImageController, PacoteController, UserController, VisitorController};
 use App\Http\Controllers\SuperAdmin\{RegisterCompanyController, TermosController, SuperAdminController};
 use Illuminate\Support\Facades\Route;
 
@@ -39,5 +39,9 @@ Route::middleware("auth")->prefix("/super/admin")->group(function(){
     Route::controller(GenerateImageController::class)->group(function(){
         Route::get("/pacotes/imagem/incial", "index")->name("super.admin.generate.image.index");
         Route::post("/pacotes/imagem/save", "packgeSave")->name("super.admin.generate.image.save");
+    });
+
+    Route::controller(VisitorController::class)->group(function(){
+        Route::get("/visitas", "index")->name("super.admin.visitor.index");
     });
 });

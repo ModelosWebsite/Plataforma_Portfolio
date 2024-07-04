@@ -9,24 +9,26 @@
     @include("components.pacote.whatsapp")
   @endif
 
-  <!-- ======= Hero Section ======= -->
-  <div id="hero" class="hero route bg-image">
-    <div class="overlay-itro"></div>
-    <div class="hero-content display-table">
-      <div class="table-cell">
-        <div class="container">
-            @foreach ($hero as $item)
-                <h1 class="hero-title mb-4">{{$item->title}}</h1>
-                <p class="hero-subtitle"><span class="typed" data-typed-items="{{$item->description}}"></span></p>
-            @endforeach
+  @if (Route::current()->getName() == "site.portfolio.index")
+    <!-- ======= Hero Section ======= -->
+    <div id="hero" class="hero route bg-image">
+      <div class="overlay-itro"></div>
+      <div class="hero-content display-table">
+        <div class="table-cell">
+          <div class="container">
+              @foreach ($hero as $item)
+                  <h1 class="hero-title mb-4">{{$item->title}}</h1>
+                  <p class="hero-subtitle"><span class="typed" data-typed-items="{{$item->description}}"></span></p>
+              @endforeach
+          </div>
         </div>
       </div>
+
     </div>
-
-  </div><!-- End Hero Section -->
-
+    <!-- End Hero Section -->
+  @endif
+  
   <main id="main">
-
     <!-- ======= About Section ======= -->
     <section id="about" class="about-mf sect-pt4 route">
       <div class="container-fluid px-3 px-md-3 px-lg-4">
@@ -90,27 +92,28 @@
           </div>
         </div>
       </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
 
-  <div class="container-fluid px-3 px-md-3 px-lg-4">
-      <div class="position-relative">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            @foreach ($apiArray as $anuncio)
-            <div class="carousel-item active">
-                @if ($anuncio["tipo"] === "Horizontal")
-                  <a href="{{$anuncio["link"] ?? NULL}}" target="_blank">
-                    <div style="width: 100%">
-                      <img src="{{url("{$anuncio["image_full_url"]}")  ?? NULL}}" alt="" style="width:100%">
-                      <div style="position: absolute; top:5px; width:10px; height: 10px; right:28px;"><i class="bi bi-info-circle-fill cursor-pointer" style="color: #ffffff" title="Está Publicidade é de inteira responsabilidade da Fort-Code"></i></div>
-                    </div>
-                  </a>
-                @endif
-              </div>
-              @endforeach
+    <div class="container-fluid px-3 px-md-3 px-lg-4">
+        <div class="position-relative">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              @foreach ($apiArray as $anuncio)
+              <div class="carousel-item active">
+                  @if ($anuncio["tipo"] === "Horizontal")
+                    <a href="{{$anuncio["link"] ?? NULL}}" target="_blank">
+                      <div style="width: 100%">
+                        <img src="{{url("{$anuncio["image_full_url"]}")  ?? NULL}}" alt="" style="width:100%">
+                        <div style="position: absolute; top:5px; width:10px; height: 10px; right:28px;"><i class="bi bi-info-circle-fill cursor-pointer" style="color: #ffffff" title="Está Publicidade é de inteira responsabilidade da Fort-Code"></i></div>
+                      </div>
+                    </a>
+                  @endif
+                </div>
+                @endforeach
+            </div>
           </div>
         </div>
-      </div>
     </div>
 
     <!-- ======= Services Section ======= -->
@@ -144,7 +147,8 @@
         @endforeach
         </div>
       </div>
-    </section><!-- End Services Section -->
+    </section>
+    <!-- End Services Section -->
 
         <!-- ======= Counter Section ======= -->
         <div class="section-counter paralax-mf bg-image">
@@ -365,20 +369,21 @@
             <!-- Button trigger modal termos de cprivacidades e condições-->
             <a type="button" class="text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Politicas de Privacidade |  
-              @include("components.pacote.privacy")
             </a>
             <a type="button" class="text-white" data-bs-toggle="modal" data-bs-target="#conditions">
               Termos e Condições  
-              @include("components.pacote.conditions")
             </a>
           </div>
         </div>
       </div>
     </div>
   </footer><!-- End  Footer -->
+  
   <style>
     .copyright-box p a{
       color: #ffffff;
     }
   </style>
+    @include("components.pacote.privacy")
+  @include("components.pacote.conditions")
 @endsection

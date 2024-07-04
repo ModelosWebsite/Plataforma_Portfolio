@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ConditionsController;
 use App\Http\Controllers\Admin\ConfigSiteController;
+use App\Http\Controllers\Admin\DeliveryController;
 use App\Http\Controllers\Admin\HabilidadeController;
 use App\Http\Controllers\Admin\PortalPbCOntroller;
 use App\Http\Controllers\Admin\QuestionControll;
@@ -102,6 +103,11 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
     Route::controller(StatusDeliveryController::class)->group(function(){
         Route::get("/delivery/status", "index")->name("plataform.portfolio.admin.delivery.status");
     });
+
+    Route::controller(DeliveryController::class)->group(function(){
+        Route::get("/lista/encomeda", "index")->name("plataform.portfolio.admin.delivery.list");
+    });
+
 });
 
 Route::controller(LoginController::class)->group(function(){

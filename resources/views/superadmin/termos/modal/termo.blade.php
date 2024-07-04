@@ -10,13 +10,13 @@
             <form id="saveData">
                 @csrf
                 <div class="form-group">
-                    <label class="form-label">Termos de privaciade</label>
-                    <textarea class="form-control" name="condition" cols="20" rows="5" placeholder=""></textarea>
+                    <label class="form-label">Politicas de Privacidades</label>
+                    <textarea class="form-control" name="term" cols="20" rows="5" placeholder=""></textarea>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Termos e condições</label>
-                    <textarea class="form-control" name="privacy" cols="20" rows="5" placeholder=""></textarea>
+                    <textarea class="form-control" name="privacity" cols="20" rows="5" placeholder=""></textarea>
                 </div>
             
                 <div class="form-group">

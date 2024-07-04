@@ -21,9 +21,11 @@
 
                 <div class="form-group">
                     <label class="form-label" for="pacote">Elementos Premium</label>
-                    <select name="pacote" id="pacote" class="form-control">
+                    <select name="packgeid" id="pacote" class="form-control">
                         <option selected disabled>Selecione um elemento</option>
-                        <option value="WhatsApp">WhatsApp</option>
+                        @foreach ($packges as $packge)
+                            <option value="{{$packge->id}}">{{$packge->packgename}}</option>
+                        @endforeach
                     </select>
                 </div>
 
