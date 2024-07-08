@@ -41,7 +41,8 @@ class SiteController extends Controller
                 $hero = Hero::where("company_id", $data->id)->get();
                 $color = Color::where("company_id", $data->id)->first();
         
-                $pacotes = Pacote::where("company_id", $data->id)->first();
+                $WhatsApp = Pacote::where("company_id", $data->id)->where("pacote", "WhatsApp")->first();
+                $packges = Pacote::where("company_id", $data->id)->where("pacote", "Shopping")->first();
                 $phonenumber = Contact::where("company_id", $data->id)->first();
                 $habilitys = Habilidade::where("company_id", $data->id)->get();
     
@@ -50,35 +51,8 @@ class SiteController extends Controller
     
                 $companies = Termpb_has_Company::where("company_id", $data->id)->with('termsPBs')->first();
     
-                $termos = TermsCompany::where("company_id", $data->id)->first();
+                //$termos = TermsCompany::where("company_id", $data->id)->first();
                 $companyhash = ModelsCompany::where("companyhashtoken", $company)->first();
-                
-                // Capturar informações da requisição
-                $userAgent = request()->header('User-Agent');
-
-                // Usar a biblioteca Jenssegers/Agent para analisar o user agent
-                $agent = new Agent();
-                $agent->setUserAgent($userAgent);
-
-                //salvar os dados no banco
-                $visitors = new visitor();
-
-                $visitors->ip = request()->ip();
-                $visitors->browser = $agent->browser();
-                $visitors->system = $agent->platform();
-                $visitors->device = $agent->device();
-                
-                if ($agent->isDesktop()) {
-                    $visitors->typedevice = "Computador";
-                }if ($agent->isPhone()) {
-                    $visitors->typedevice = "Telefone";
-                }if ($agent->isTablet()) {
-                    $visitors->typedevice = "Tablet";
-                }
-                
-                $visitors->company = $companyhash->companyname;
-                
-                $visitors->save();
 
                 session()->put("companyhashtoken", $companyhash->companyhashtoken);
                 return view("pages.home", [
@@ -95,10 +69,11 @@ class SiteController extends Controller
                     "name" => $name,
                     "companies" => $companies,
                     "color" => $color,
-                    "pacotes" => $pacotes,
+                    "whatsApp" => $WhatsApp,
+                    "packges" => $packges,
                     "phonenumber" => $phonenumber,
                     "data" => $data,
-                    "termos" => $termos,
+                   //"termos" => $termos,
                     "apiArray" => $apiArray,
                     "habilitys" => $habilitys,
                     "imageHero" => $this->imageHero($company),
@@ -171,11 +146,13 @@ class SiteController extends Controller
         try {
             $company = $this->getCompany(session("companyhashtoken"));
             $color = Color::where("company_id", $company->id)->first();
+            $packges = Pacote::where("company_id", $company->id)->where("pacote", "Shopping")->first();
 
             return view("pages.shopping.home", 
                 [
                     "name" => $company,
-                    "color" => $color
+                    "color" => $color,
+                    "packges" => $packges
                 ]
             );
         } catch (\Throwable $th) {
@@ -189,10 +166,12 @@ class SiteController extends Controller
             //code...
             $company = $this->getCompany(session("companyhashtoken"));
             $color = Color::where("company_id", $company->id)->first();
+            $packges = Pacote::where("company_id", $company->id)->where("pacote", "Shopping")->first();
 
             return view("pages.shopping.shoppingcart", [
                 "color" => $color,
-                "name" => $company
+                "name" => $company,
+                "packges" => $packges
             ]);
         } catch (\Throwable $th) {
             return redirect()->back();

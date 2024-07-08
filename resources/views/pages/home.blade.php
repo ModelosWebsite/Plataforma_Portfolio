@@ -5,7 +5,7 @@
 @include("components.images")
 @include("components.color")
 
-  @if ($pacotes && $pacotes->status === "premium" && $pacotes->pacote === "WhatsApp")
+  @if ($whatsApp && $whatsApp->pacote === "WhatsApp" && $whatsApp->status === "premium")
     @include("components.pacote.whatsapp")
   @endif
 

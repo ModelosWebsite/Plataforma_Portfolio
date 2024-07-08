@@ -8,7 +8,9 @@
           <li><a class="nav-link scrollto" href="{{route("site.portfolio.index", ["company" => $name->companyhashtoken])}}#about">Sobre</a></li>
           <li><a class="nav-link scrollto" href="{{route("site.portfolio.index", ["company" => $name->companyhashtoken])}}#services">Serviços</a></li>
           <li><a class="nav-link scrollto " href="{{route("site.portfolio.index", ["company" => $name->companyhashtoken])}}#work">Trabalhos</a></li>
-          <li><a class="nav-link scrollto " href="{{route("site.portfolio.shopping")}}">Loja</a></li>
+          @if ($packges && $packges->pacote === "Shopping" && $packges->status === "premium")
+            <li><a class="nav-link scrollto " href="{{route("site.portfolio.shopping", ["company" => $name->companyhashtoken])}}">Loja</a></li>
+          @endif
           <li><a class="nav-link scrollto" href="{{route("site.portfolio.index", ["company" => $name->companyhashtoken])}}#contact">Contacto</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

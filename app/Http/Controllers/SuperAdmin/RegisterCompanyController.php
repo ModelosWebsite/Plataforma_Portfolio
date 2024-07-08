@@ -12,30 +12,23 @@ use RealRashid\SweetAlert\Facades\Alert;
 class RegisterCompanyController extends Controller
 {
     public function companyRegister(Request $request) {
-        // Validation
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:companies,companyemail',
-            'nif' => 'required|string|unique:companies,companynif',
-            'type' => 'required|string',
-        ]);
-    
         DB::beginTransaction();
         try {
             // Create token for company
-            $tokenCompany = $validatedData['name']. rand(2000, 3000);
+            $tokenCompany = $request->name. rand(2000, 3000);
     
             $company = new company();
-            $company->companyname = $validatedData['name'];
-            $company->companyemail = $validatedData['email'];
-            $company->companynif = $validatedData['nif'];
-            $company->companybusiness = $validatedData['type'];
+            $company->companyname = $request->name;
+            $company->companyemail = $request->email;
+            $company->companynif = $request->nif;
+            $company->companybusiness = $request->type;
             $company->companyhashtoken = $tokenCompany;
+            $company->companytokenapi = $request->apitoken;
             $company->save();
 
             $user = new User();
-            $user->name = $validatedData['name'];
-            $user->email = $validatedData['email'];
+            $user->name = $request->name;
+            $user->email = $request->email;
             $user->password = Hash::make('f0rtc0d3'); 
             $user->role = "Administrador";
             $user->company_id = $company->id;
@@ -61,12 +54,11 @@ class RegisterCompanyController extends Controller
         try {
             
             $company = company::find($request->id);
-            $tokenCompany = $request->name. rand(2000, 3000);
             $company->companyname = $request->name;
             $company->companyemail = $request->email;
             $company->companynif = $request->nif;
             $company->companybusiness = $request->type;
-            $company->companyhashtoken = $tokenCompany;
+            $company->companytokenapi = $request->apitoken;
             $company->update();
 
             DB::commit();
@@ -74,7 +66,6 @@ class RegisterCompanyController extends Controller
             return redirect()->back();
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th->getMessage());
             return redirect()->back()->with("error", "Erro ao actualizar empresa: " . $th->getMessage());
         }
     }

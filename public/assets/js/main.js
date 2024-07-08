@@ -234,7 +234,6 @@
 
 })()
 
-
 class Cookies {
   constructor() {
       this.key = '@cookies';
