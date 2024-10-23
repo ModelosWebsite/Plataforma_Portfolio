@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ShoopingController;
 use App\Http\Controllers\Admin\StatusDeliveryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Livewire\Config\Hero;
 use App\Livewire\Site\DeliveryStatusComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,9 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
         //profile
         Route::get("perfi/", "profileUser")->name("admin.management.user.profile");
         Route::post("perfi/edit/{id}", "updateProfile")->name("admin.management.update.profile");
+
+        //configurações
+        Route::get("config/", Hero::class)->name("admin.management.config");
     });
 
     Route::controller(ConditionsController::class)->group(function(){
@@ -113,5 +117,5 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
 Route::controller(LoginController::class)->group(function(){
     Route::get("/login/view", "loginview")->name("anuncio.login.view");
     Route::post("/login", "login")->name("anuncio.login");
-    Route::get("/sair", "logout")->name("anuncio.logout");
+    Route::get("/terminar/sessao", "logout")->name("anuncio.logout");
 });

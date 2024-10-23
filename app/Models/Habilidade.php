@@ -9,6 +9,8 @@ class Habilidade extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "company_id"
+        "company_id",
+        "hability",
+        "level"
     ];
 }

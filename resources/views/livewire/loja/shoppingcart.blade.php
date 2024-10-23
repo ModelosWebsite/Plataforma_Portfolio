@@ -19,15 +19,15 @@
                                     <tr>
                                         <td class="product__cart__item">
                                             <div class="product__cart__item__pic">
-                                                {{-- 
+                                                
                                                 @if ($item->attributes['image'] != null)
                                                     <img style="width: 80px"
                                                         src="https://kytutes.com/storage/{{ $item->attributes['image'] }}"
                                                         class="img-fluid" alt="">
-                                                    @else
+                                                @else
+                                                    <img style="width: 80px" src="{{ asset("notfound.svg") }}" class="img-fluid" alt="">
                                                 @endif 
-                                                --}}
-                                                <img style="width: 80px" src="{{ asset("notfound.svg") }}" class="img-fluid" alt="">
+                                                
                                             </div>
                                             <div class="product__cart__item__text">
                                                 <h6>{{ $item->name }}</h6>

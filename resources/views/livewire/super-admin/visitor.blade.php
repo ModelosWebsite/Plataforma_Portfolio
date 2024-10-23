@@ -37,5 +37,6 @@
                 </tbody>
             </table>
         </div>
+        @include("livewire.super-admin.company")
     </div>
 </div>

@@ -59,6 +59,12 @@
                                     </table>
                                 </div>
                             </div>
+
+                            <div class="card-footer">
+                                <div class="pagination">
+                                    {{ $users->links('pagination::bootstrap-4') }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

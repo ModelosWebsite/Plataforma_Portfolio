@@ -14,8 +14,7 @@ class SuperAdminController extends Controller
     }
     //criar a conta de cada portfolio
     public function accountView(){
-        $companies = company::all();
+        $companies = company::paginate(6);
         return view("superadmin.account", ["companies" => $companies]);
     }
-
 }

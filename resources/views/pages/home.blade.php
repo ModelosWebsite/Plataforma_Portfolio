@@ -41,7 +41,7 @@
                     <div class="col-sm-6 col-md-5">
                         @foreach ($hero as $item)  
                             <div class="about-img"> 
-                                <img style="border-radius: 12rem;width: 13rem; height: 13rem;" src="{{asset('/image/'.$item->img)}}" class="img-fluid b-shadow-a" alt="">
+                                <img style="border-radius: 12rem;width: 13rem; height: 13rem;" src="{{Storage::url("arquivos/{$item->img}")}}" class="img-fluid b-shadow-a" alt="">
                             </div>
                         @endforeach
                     </div>
@@ -234,7 +234,7 @@
             <div class="work-box">
               <a href="/image/{{$project->image}}" data-gallery="portfolioGallery" class="portfolio-lightbox">
                 <div class="work-img">
-                  <img src="/image/{{$project->image}}" alt="" class="img-fluid">
+                  <img src="{{Storage::url("arquivos/{$project->image}")}}" alt="" class="img-fluid">
                 </div>
               </a>
               <div class="work-content">
@@ -290,11 +290,6 @@
                             <div class="form-group">
                               <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
                             </div>
-                          </div>
-                          <div class="col-md-12 text-center my-3">
-                            <div class="loading">Processar</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Obrigado pela sua sua sms!</div>
                           </div>
                           <div class="col-md-12 text-center">
                             <button type="submit" class="button button-a button-big button-rouded">Enviar</button>
@@ -371,8 +366,9 @@
               Politicas de Privacidade |  
             </a>
             <a type="button" class="text-white" data-bs-toggle="modal" data-bs-target="#conditions">
-              Termos e Condições  
+              Termos e Condições   |
             </a>
+            <a class="text-white" href="{{route("anuncio.login.view")}}">Fazer Login</a>
           </div>
         </div>
       </div>

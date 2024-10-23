@@ -67,7 +67,13 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
-                                    </table>
+                                    </table>                       
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="pagination">
+                                    {{ $companies->links('pagination::bootstrap-4') }}
                                 </div>
                             </div>
                         </div>
