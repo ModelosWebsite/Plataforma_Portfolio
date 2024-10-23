@@ -34,7 +34,8 @@ class Inicial extends Component
         $this->databout = Documentation::where("panel", "PAINEL DO ADMINISTRADOR")->where("section", "SOBRE")->get();
     }
 
-    public function registerdatas(){
+    public function registerdatas()
+    {
         try {
             $data = new hero();
             
@@ -70,18 +71,20 @@ class Inicial extends Component
         }
     }
 
-    public function updateHero($getId){
+    public function updateHero($getId)
+    {
         try {
             $data = hero::find($getId);
 
-            if ($this->image) {
-                $imageName = $this->image->store('arquivos', 'public'); // Certifique-se de usar $imageName
-                $data->img = $imageName;
+            //manipulacao de arquivo;
+            if ($this->image != null and !is_string($this->image)) {
+                $fileName = rand(2000, 3000) .".".$this->image->getClientOriginalExtension();
+                $this->image->storeAs("public/arquivos",$fileName);
             }
 
             $data->title = $this->title;
             $data->description = $this->description;
-            // $data->img = $filaName;
+            $data->img = $fileName;
 
             $data->update();
             $this->mount();
@@ -95,7 +98,6 @@ class Inicial extends Component
             ]);
 
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             $this->alert('error', 'ERRO', [
                 'toast'=>false,
                 'position'=>'center',

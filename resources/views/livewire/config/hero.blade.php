@@ -5,7 +5,7 @@
                 <div class="card mb-4">
                     <!-- Card Header -->
                     <div class="card-header bg-primary py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-white">Configurações de Conteúdo do site</h6>
+                        <h6 class="m-0 font-weight-bold text-white">Configurações de Conteúdo do site - Click em cada imagem para editar o seu site</h6>
                     </div>
                     
                     <!-- Card Body -->
@@ -52,6 +52,7 @@
                                 <div id="works" class="tabcontent">@livewire("config.project")</div>
                                 <div id="footer" class="tabcontent">@livewire("config.footer")</div>
                             </div>
+                            
                         </div>
 
                         <!-- External Stylesheet -->

@@ -41,7 +41,7 @@
                     <div class="col-sm-6 col-md-5">
                         @foreach ($hero as $item)  
                             <div class="about-img"> 
-                                <img style="border-radius: 12rem;width: 13rem; height: 13rem;" src="{{Storage::url("arquivos/{$item->img}")}}" class="img-fluid b-shadow-a" alt="">
+                                <img style="border-radius: 12rem;width: 13rem; height: 13rem;" src="{{Storage::url("public/arquivos/{$item->img}")}}" class="img-fluid b-shadow-a" alt="">
                             </div>
                         @endforeach
                     </div>
@@ -232,7 +232,7 @@
           @foreach ($projects as $project)
           <div class="col-md-4">
             <div class="work-box">
-              <a href="/image/{{$project->image}}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+              <a href="{{Storage::url("arquivos/{$project->image}")}}" data-gallery="portfolioGallery" class="portfolio-lightbox">
                 <div class="work-img">
                   <img src="{{Storage::url("arquivos/{$project->image}")}}" alt="" class="img-fluid">
                 </div>
@@ -352,7 +352,8 @@
       </div>
     </section><!-- End Contact Section -->
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer>
@@ -373,7 +374,8 @@
         </div>
       </div>
     </div>
-  </footer><!-- End  Footer -->
+  </footer>
+  <!-- End  Footer -->
   
   <style>
     .copyright-box p a{

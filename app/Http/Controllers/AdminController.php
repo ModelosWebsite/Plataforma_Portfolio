@@ -9,8 +9,7 @@ class AdminController extends Controller
 {
     
     public function index(){
-        $company_id = auth()->user()->company->id;
-        $name = About::where("company_id", $company_id)->get();
+        $name = About::where("company_id", auth()->user()->company->id)->get();
         return view("sbadmin.home", compact("name"));
     }
 

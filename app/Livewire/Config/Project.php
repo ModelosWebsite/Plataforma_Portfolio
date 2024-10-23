@@ -27,15 +27,16 @@ class Project extends Component
         ]);
 
         if ($this->projectId) {
-            if ($this->image) {
-                // Lógica para atualizar a imagem
-                $imagePath = $this->image->store('images/projects', 'public');
+            //manipulacao de arquivo;
+            if ($this->image != null and !is_string($this->image)) {
+                $fileName = rand(2000, 3000) .".".$this->image->getClientOriginalExtension();
+                $this->image->storeAs("public/arquivos",$fileName);
             }
             // Atualizar projeto
             $project = ModelsProject::find($this->projectId);
             $project->update([
                 "title" => $this->title, 
-                "image" => $imagePath
+                "image" => $fileName
             ]);
 
             $this->alert('success', 
@@ -47,14 +48,16 @@ class Project extends Component
             ]);
 
         } else {
-            if ($this->image) {
-                $imagePath = $this->image->store('images/projects', 'public');
+            //manipulacao de arquivo;
+            if ($this->image != null and !is_string($this->image)) {
+                $fileName = rand(2000, 3000) .".".$this->image->getClientOriginalExtension();
+                $this->image->storeAs("public/arquivos",$fileName);
             }
             // Adicionar novo projeto
             $project = ModelsProject::create([
                 "title" => $this->title, 
                 "company_id" => auth()->user()->company_id,
-                "image" => $imagePath
+                "image" => $fileName
             ]);
 
             $this->alert('success', 

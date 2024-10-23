@@ -23,9 +23,9 @@
                         <h5>link de acesso ao site: <a target="_blank" href="http://127.0.0.1:8000/{{Str::lower(auth()->user()->company->companyhashtoken)}}">https://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}</a> </h5>
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-8 mt-2">
                       <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="box-shadow: none;">
                           <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shooping" aria-expanded="true" aria-controls="shooping">
                               Como Adicionar itens na loja?
