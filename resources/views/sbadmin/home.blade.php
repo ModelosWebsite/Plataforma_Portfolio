@@ -6,6 +6,7 @@
     <!-- Content Wrapper -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
@@ -17,14 +18,15 @@
             <!-- Begin Page Content -->
             <div class="container-fluid" style="margin-top: 8rem">
                 <div class="row col-xl-12 d-flex justify-content-center align-content-center">
-                
+                  
                     <div class="text-center">
-                        <h2>Bem vindo ao painel administrativo do teu site <span class="text-primary">{{auth()->user()->name}}</span></h2>
-                        <h5>link de acesso ao site: <a target="_blank" href="http://127.0.0.1:8000/{{Str::lower(auth()->user()->company->companyhashtoken)}}">https://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}</a> </h5>
+                        <h2>Bem vindo ao painel administrativo do seu site <span class="text-primary">{{auth()->user()->name}}</span></h2>
+                        <h5>link de acesso ao site: <a target="_blank" href="http://127.0.0.1:8000/{{Str::lower(auth()->user()->company->companyhashtoken)}}">https://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}</a></h5>
                     </div>
 
                     <div class="col-md-8 mt-2">
                       <div class="accordion" id="accordionExample">
+                        
                         <div class="accordion-item" style="box-shadow: none;">
                           <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shooping" aria-expanded="true" aria-controls="shooping">
@@ -37,6 +39,7 @@
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
                           <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#marketing" aria-expanded="false" aria-controls="marketing">
@@ -49,6 +52,7 @@
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
                           <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#premium" aria-expanded="false" aria-controls="premium">
@@ -74,10 +78,11 @@
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </div>
                     
-                </div> 
+                </div>
             </div> 
         </div>
         <!-- /.container-fluid -->

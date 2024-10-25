@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\StatusDeliveryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Livewire\Config\Hero;
+use App\Livewire\Definition\DefinitionGeneral;
 use App\Livewire\Site\DeliveryStatusComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +70,7 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
 
         //configurações
         Route::get("config/", Hero::class)->name("admin.management.config");
+        Route::get("definicao/geral", DefinitionGeneral::class)->name("denition.general");
     });
 
     Route::controller(ConditionsController::class)->group(function(){

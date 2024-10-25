@@ -3,11 +3,9 @@
 namespace App\Livewire\Subscription;
 
 use App\Mail\CreateSite;
-use App\Models\company;
-use App\Models\User;
+use App\Models\{User, company};
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\{Hash, Mail};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -70,8 +68,10 @@ class Home extends Component
 
                 event(new Registered($user));
 
+                $verificationCode = "123456";
+
                 // Enviar o e-mail com o código de verificação
-                //Mail::to($user->email)->send(new CreateSite($verificationCode));
+                Mail::to($user->email)->send(new CreateSite($verificationCode));
 
                 $this->clearForm();
 
@@ -85,7 +85,6 @@ class Home extends Component
                 //return redirect()->route('verification.notice');
 
             } catch (\Throwable $th) {
-                dd($th->getMessage());
                 $this->alert('error', 'ERRO', [
                     'toast'=>false,
                     'position'=>'center',

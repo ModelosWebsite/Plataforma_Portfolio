@@ -73,37 +73,12 @@
                     <span>Editar Website</span>
                 </a>
 
-                {{-- <a class="collapse-item {{(Route::current()->getName() == "admin.about") ? "text-primary" : ""}}" href="{{route("admin.about")}}">
+                <a class="collapse-item {{Route::current()->getName() == "denition.general" ? "text-primary" : ""}}" href="{{route("denition.general")}}">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Sobre Mim</span>
+                    <span>Geral</span>
                 </a>
 
-                <a class="collapse-item {{(Route::current()->getName() == "admin.view.services") ? "text-primary" : ""}}" href="{{route("admin.view.services")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Serviços</span>
-                </a>
-
-                <a class="collapse-item {{(Route::current()->getName() == "admin.footer") ? "text-primary" : ""}}" href="{{route("admin.footer")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Rodapé</span>
-                </a>
-
-                <a class="collapse-item {{(Route::current()->getName() == "admin.infowhy") ? "text-primary" : ""}}" href="{{route("admin.infowhy")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Trabalhos</span>
-                </a>
-
-                <a class="collapse-item {{(Route::current()->getName() == "admin.detail") ? "text-primary" : ""}}" href="{{route("admin.detail")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Componentes do Site</span>
-                </a>
-
-                <a class="collapse-item {{(Route::current()->getName() == "admin.hability.view") ? "text-primary" : ""}}" href="{{route("admin.hability.view")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Competências</span>
-                </a> --}}
-
-                <a class="collapse-item {{Route::current()->getName() == "anuncio.management.view.color" ? "text-primary" : ""}}" href="{{route("anuncio.management.view.color")}}">
+                {{-- <a class="collapse-item {{Route::current()->getName() == "anuncio.management.view.color" ? "text-primary" : ""}}" href="{{route("anuncio.management.view.color")}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Paleta de Cores</span>
                 </a>
@@ -121,26 +96,26 @@
                 <a class="collapse-item {{Route::current()->getName() == "admin.config.view" ? "text-primary" : ""}}" href="{{route("admin.config.view")}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Ajustes</span>
-                </a>
+                </a> --}}
 
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#help">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Suporte</span>
                 </a>
 
-                <a class="collapse-item {{Route::current()->getName() == "admin.management.user.profile" ? "text-primary" : ""}}" href="{{route("admin.management.user.profile")}}">
+                {{-- <a class="collapse-item {{Route::current()->getName() == "admin.management.user.profile" ? "text-primary" : ""}}" href="{{route("admin.management.user.profile")}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Minha Conta</span>
-                </a>
+                </a> --}}
             </div>
         </div>
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route("anuncio.logout")}}">
-            <i class="fa fa-fw fa-tachometer-alt"></i>
-            <span>Terminar Sessão</span>
-        </a>
-    </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{route("anuncio.logout")}}">
+                <i class="fa fa-fw fa-tachometer-alt"></i>
+                <span>Terminar Sessão</span>
+            </a>
+        </li>
 
     </li>
 
