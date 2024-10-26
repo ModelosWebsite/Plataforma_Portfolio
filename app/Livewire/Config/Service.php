@@ -8,8 +8,7 @@ use Livewire\Component;
 
 class Service extends Component
 {
-    public $getService, $title, $description, $serviceId;
-    public $editMode = false;
+    public $getService, $title, $description,$editMode = false, $serviceId;
     use LivewireAlert;
 
     public function mount()
@@ -19,27 +18,38 @@ class Service extends Component
 
     public function storeService()
     {
-        $this->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
+        try {
+            $this->validate([
+                'title' => 'required',
+                'description' => 'required',
+            ]);
+    
+            ModelsService::create([
+                'title' => $this->title,
+                'description' => $this->description,
+                "company_id" => auth()->user()->company_id,
+            ]);
+    
+            $this->resetFields();
+            $this->mount(); // Atualiza a lista de serviços
+            
+            $this->alert('success', 
+                'CADASTRADO', [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+            ]);
 
-        ModelsService::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            "company_id" => auth()->user()->company_id,
-        ]);
-
-        $this->resetFields();
-        $this->mount(); // Atualiza a lista de serviços
-        
-        $this->alert('success', 
-        'CADASTRADO', [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => false,
-            'confirmButtonText' => 'OK',
-        ]);
+        } catch (\Throwable $th) {
+            $this->alert('error', 'ERRO', [
+                'toast'=>false,
+                'position'=>'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+                'text'=>'Falha na operação'
+            ]);
+        }
     }
 
     public function editService($id)
@@ -53,20 +63,37 @@ class Service extends Component
 
     public function updateService()
     {
-        $this->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
-
-        $service = ModelsService::findOrFail($this->serviceId);
-        $service->update([
-            'title' => $this->title,
-            'description' => $this->description,
-        ]);
-
-        $this->resetFields();
-        $this->mount(); // Atualiza a lista de serviços
-        $this->editMode = false;
+        try {
+            $this->validate([
+                'title' => 'required',
+                'description' => 'required',
+            ]);
+    
+            $service = ModelsService::find($this->serviceId);
+            $service->update([
+                'title' => $this->title,
+                'description' => $this->description,
+            ]);
+    
+            $this->resetFields();
+            $this->mount(); // Atualiza a lista de serviços
+            $this->alert('success', 
+                'CADASTRADO', [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+            ]);
+            $this->editMode = false;
+        } catch (\Throwable $th) {
+            $this->alert('error', 'ERRO', [
+                'toast'=>false,
+                'position'=>'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+                'text'=>'Falha na operação'
+            ]);
+        }
     }
 
     public function deleteService($id)

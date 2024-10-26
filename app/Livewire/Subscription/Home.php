@@ -13,6 +13,7 @@ class Home extends Component
 {
     use LivewireAlert;
     public $name, $password, $lastname, $companynif, $companybusiness, $email, $confirmpassword;
+    public $loading = false;
 
     protected $rules =[
          'name'=>'required',
@@ -32,7 +33,8 @@ class Home extends Component
          'companybusiness.required'=>'Obrigatório',
          'email.unique'=>'Já existe uma conta com este email',
          'password.required'=>'Obrigatório',
-         'confirmpassword.same:password' => 'Senha é diferente',
+         'confirmpassword.required' => 'A confirmação da senha é obrigatória.',
+         'confirmpassword.same' => 'A confirmação da senha deve ser igual à senha.',
     ];
 
     public function render()
@@ -42,9 +44,9 @@ class Home extends Component
 
     public function createAccountSite()
     {
-     
         $this->validate($this->rules,$this->messages);
             try {
+                $this->loading = true; // Define loading como true
                 // Create token for company
                 $tokenCompany = $this->name. rand(2000, 3000);
 
@@ -67,19 +69,14 @@ class Home extends Component
                 $user->save();
 
                 event(new Registered($user));
-
-                $verificationCode = "123456";
-
-                // Enviar o e-mail com o código de verificação
-                Mail::to($user->email)->send(new CreateSite($verificationCode));
-
+                $this->loading = false; // Define loading como false após salvar
                 $this->clearForm();
 
                 $this->alert('success', 'SUCESSO', [
                     'toast'=>false,
                     'position'=>'center',
                     'timer' => '3500',
-                    'text'=>'Website Criado com sucesso, faça o seu login com seu email e senha definidas por ti',
+                    'text'=>'Website Criado com sucesso, verifique seu email para para habilitar a sua Conta',
                 ]);
 
                 //return redirect()->route('verification.notice');

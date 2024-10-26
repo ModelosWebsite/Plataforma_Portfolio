@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +11,7 @@ require __DIR__ . "/admin.php";
 require __DIR__ . "/SuperAdmin/routes.php";
 require __DIR__ . "/subscription/routes.php";
 
-Route::get('/email/verify/{id}/{hash}', function (Request $request) {
+Route::get('/email/verify/{id}/{hash}', function () {
     $auth = Request("id");
     if ($auth != null) {
         

@@ -16,23 +16,49 @@ class Competence extends Component
     }
 
     public function habilityCriar() {
-
-        if ($this->habilityId) {
-            // Atualizar
-            $hability = Habilidade::find($this->habilityId);
-            $hability->update(['hability' => $this->hability, 'level' => $this->level]);
-        } else {
-            // Adicionar
-            Habilidade::create([
-                'hability' => $this->hability, 
-                'level' => $this->level, 
-                'company_id' => auth()->user()->company_id
+        try {
+            if ($this->habilityId) {
+                // Atualizar
+                $hability = Habilidade::find($this->habilityId);
+                $hability->update(['hability' => $this->hability, 'level' => $this->level]);
+    
+                $this->alert('success', 'SUCESSO', [
+                    'toast'=>false,
+                    'position'=>'center',
+                    'showConfirmButton' => false,
+                    'confirmButtonText' => 'OK',
+                    'text'=>'Habilidade Actualizada'
+                ]);
+    
+            } else {
+                // Adicionar
+                Habilidade::create([
+                    'hability' => $this->hability, 
+                    'level' => $this->level, 
+                    'company_id' => auth()->user()->company_id
+                ]);
+    
+                $this->alert('success', 'SUCESSO', [
+                    'toast'=>false,
+                    'position'=>'center',
+                    'showConfirmButton' => false,
+                    'confirmButtonText' => 'OK',
+                    'text'=>'Habilidade Cadastrada'
+                ]);
+            }
+    
+            // Limpar os campos
+            $this->reset(['habilityId', 'hability', 'level']);
+            $this->gethability = Habilidade::where("company_id", auth()->user()->company->id)->get();
+        } catch (\Throwable $th) {
+            $this->alert('error', 'ERRO', [
+                'toast'=>false,
+                'position'=>'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+                'text'=>'Falha na operação'
             ]);
         }
-
-        // Limpar os campos
-        $this->reset(['habilityId', 'hability', 'level']);
-        $this->gethability = Habilidade::where("company_id", auth()->user()->company->id)->get(); // Atualiza a lista de habilidades
     }
 
     public function editHability($id) {
@@ -44,7 +70,14 @@ class Competence extends Component
 
     public function deleteHability($id) {
         Habilidade::destroy($id);
-        $this->gethability = Habilidade::where("company_id", auth()->user()->company->id)->get(); // Atualiza a lista após exclusão
+        $this->gethability = Habilidade::where("company_id", auth()->user()->company->id)->get();
+        $this->alert('success', 'SUCESSO', [
+            'toast'=>false,
+            'position'=>'center',
+            'showConfirmButton' => false,
+            'confirmButtonText' => 'OK',
+            'text'=>'Habilidade Eliminada'
+        ]);
     }
 
     public function render()

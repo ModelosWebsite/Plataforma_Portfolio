@@ -14,6 +14,7 @@ class About extends Model
         "nome",
         "perfil",
         "p1",
-        "p2"
+        "p2",
+        "company_id"
     ];
 }

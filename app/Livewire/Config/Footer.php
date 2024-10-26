@@ -8,66 +8,75 @@ use Livewire\Component;
 
 class Footer extends Component
 {
-    public $getfooter, $telefone, $endereco, $email, $atendimento;
-
+    public $telefone, $email, $endereco, $atendimento, $rodapeId, $isEditing = false;
     use LivewireAlert;
+
+    // Método para inicializar o componente com dados do usuário autenticado
+    public function mount()
+    {
+        $user = contact::where("company_id", auth()->user()->company_id)->first();
+        if ($user) {
+            $this->rodapeId = $user->id;
+            $this->telefone = $user->telefone;
+            $this->email = $user->email;
+            $this->endereco = $user->endereco;
+            $this->atendimento = $user->atendimento;
+        } else {
+            // Defina valores padrão caso $user seja null (nenhum contato encontrado)
+            $this->rodapeId = null;
+            $this->telefone = null;
+            $this->email = null;
+            $this->endereco = null;
+            $this->atendimento = null;
+        }
+    }
+
+    public function toggleEditMode()
+    {
+        $this->isEditing = !$this->isEditing;
+    }
+
+    public function save()
+    {
+        try {
+            $user = contact::find($this->rodapeId);
+            if (!$user) {
+                // Cria um novo usuário se não existir
+                $user = new contact();
+
+            }
+
+            $user->email = $this->email;
+            $user->telefone = $this->telefone;
+            $user->atendimento = $this->atendimento;
+            $user->endereco = $this->endereco;
+            $user->company_id = auth()->user()->company_id;
+
+            $user->save();
+
+            $this->alert('success', 'SUCESSO', [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+                'text' => 'Credenciais atualizadas'
+            ]);
+            
+            $this->toggleEditMode(); // Desativa o modo de edição após salvar
+        
+        } catch (\Throwable $th) {
+            $this->alert('error', 'ERRO', [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => false,
+                'confirmButtonText' => 'OK',
+                'text' => 'Falha na operação: ' . $th->getMessage()
+            ]);
+        }
+    }
 
     public function render()
     {
-        return view('livewire.config.footer', $this->getfooter = contact::where("company_id", auth()->user()->company->id)->get());
+        return view('livewire.config.footer');
     }
-
-    public function storefooter()
-    {
-        try {            
-            $data = new contact();
-
-            $data->telefone = $this->telefone;
-            $data->endereco = $this->endereco;
-            $data->email = $this->email;
-            $data->atendimento = $this->atendimento;
-            $data->company_id = auth()->user()->company->id;
-
-            $data->save();
-
-            $this->clearform();
-
-            $this->alert('success', 'SUCESSO', [
-                'toast'=>false,
-                'position'=>'center',
-                'showConfirmButton' => false,
-                'confirmButtonText' => 'OK',
-                'text'=>'Informações Inseridas'
-            ]);
-
-        } catch (\Throwable $th) {
-            $this->alert('error', 'ERRO', [
-                'toast'=>false,
-                'position'=>'center',
-                'showConfirmButton' => false,
-                'confirmButtonText' => 'OK',
-                'text'=>'Falha na Operação'
-            ]);
-        }   
-    }
-
-    public function clearform()
-    {
-        $this->telefone = "";
-        $this->endereco = "";
-        $this->email = "";
-        $this->atendimento = "";
-    }
-
-    // public function actualizarContact(Request $request, $id)
-    // {
-    //     contact::where(["id" => $id])->update([
-    //         "telefone" => $request->telefone,
-    //         "endereco" => $request->endereco,
-    //         "atendimento" => $request->atendimento,
-    //         "email" => $request->email,
-    //         "id" => $request->id,
-    //     ]);
-    //     return redirect()->back()->with("success", "Footer actualizado");
-    // }
 }

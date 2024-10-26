@@ -15,7 +15,7 @@ use App\Livewire\Definition\DefinitionGeneral;
 use App\Livewire\Site\DeliveryStatusComponent;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware("auth")->prefix("/admin/")->group(function(){
+Route::middleware("verified")->prefix("/admin/")->group(function(){
     //Routes do administrador do site para manipulação
     Route::controller(AdminController::class)->group(function(){
         Route::get("index/{id?}", "index")->name("admin.index");
@@ -27,7 +27,6 @@ Route::middleware("auth")->prefix("/admin/")->group(function(){
         Route::get("detail", "detailview")->name("admin.detail");
         Route::post("detail/store", "storeDetail")->name("admin.store.detail");
         Route::post("detaol/{id}", "actualizarDetalhes")->name("admin.detalhes.update");
-
 
         Route::get("infowhy", "infowhy")->name("admin.infowhy");
         Route::get("infowhy/edit/{id}", "editwhy")->name("admin.infowhy.edit");

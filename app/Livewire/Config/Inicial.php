@@ -17,6 +17,7 @@ class Inicial extends Component
 
     public function render()
     {
+        $this->mount();
         return view('livewire.config.inicial');
     }
 
@@ -51,6 +52,7 @@ class Inicial extends Component
             $data->img = $filaName;
 
             $data->save();
+            $this->mount();
             
             $this->alert('success', 'SUCESSO', [
                 'toast'=>false,

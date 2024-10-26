@@ -5,7 +5,7 @@
                 <div class="card mb-4">
                     <!-- Card Header -->
                     <div class="card-header bg-primary py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-white">Configurações de Conteúdo do site - Click em cada imagem para editar o seu site</h6>
+                        <h6 class="m-0 font-weight-bold text-white">Definições Gerais</h6>
                     </div>
                     
                     <!-- Card Body -->
@@ -25,8 +25,8 @@
                                 <input id="tab4" type="radio" name="tabs">
                                 <label for="tab4">Ajustes</label>
                                     
-                                <input id="tab5" type="radio" name="tabs">
-                                <label for="tab5">Suporte</label>
+                                {{-- <input id="tab5" type="radio" name="tabs">
+                                <label for="tab5">Suporte</label> --}}
 
                                 <input id="tab6" type="radio" name="tabs">
                                 <label for="tab6">Minha Conta</label>

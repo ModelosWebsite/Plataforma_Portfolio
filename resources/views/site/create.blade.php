@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Politicas e Termos</h3>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
         </div>
         <div class="modal-body">
             <form action="{{route("admin.conditions.create")}}" method="post">

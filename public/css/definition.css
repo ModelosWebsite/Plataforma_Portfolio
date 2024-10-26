@@ -172,6 +172,7 @@ input:checked + label {
 }
 .toggle-pill-color input[type="checkbox"]:checked + label {
   background: #47cf73;
+  display: block;
 }
 .toggle-pill-color input[type="checkbox"]:checked + label:before {
   box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
