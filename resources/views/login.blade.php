@@ -17,6 +17,10 @@
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
         }
+
+        .gradient-custom form div input{
+          box-shadow: none !important;
+        }
     </style>
 </head>
 <body>
@@ -44,6 +48,9 @@
                         <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>  
                    </form>
                   </div>
+                </div>
+                <div class="card-footer text-center">
+                  <a class="text-white text-decoration-none fs-5" href="{{route("site.subscription")}}">Criar um Website</a>
                 </div>
               </div>
             </div>

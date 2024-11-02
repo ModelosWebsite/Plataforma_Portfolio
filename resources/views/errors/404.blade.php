@@ -1,31 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-ao">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pagina Não encontrada</title>
-</head>
-<body>
-    <div>
-        <img src="{{url("found.png")}}" alt="">
-    </div>
-    
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Redirecionamento</title>
+
+  <!-- Vendor CSS Files -->
+  <link href="{{asset("assets/vendor/bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+        --primary: #242424;
+        --light: #F1F8FF;
+        --dark: #242424;
+        --yelow: #242424;
         }
-        div{
+        html,
+        body {
             width: 100%;
-            height: 100vh;
+        height: 100%;
+        /* fallback for old browsers */
+        background: #6a11cb;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
         }
-    
-        div img{
-            width: 100%;
-            height: 100%;
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        a:hover{
+            color: #242424 !important;
+        }
+
+        #signap form div input,
+        #signap form div select{
+            box-shadow: none !important;
         }
     </style>
+</head>
+
+<body>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <div class="text-white text-center text-uppercase">
+                    <h1 style="font-size: 5rem;">Bem Vindo ao Website Clássico Portfolio</h1>
+                    <p style="font-size: 2rem;">Para criar o seu Site ou entrar Click no botão abaixo para a fazer login</p>
+                    <a href="{{route("site.subscription")}}" class="btn btn-primary">Criar Website</a> <a href="{{route("anuncio.login.view")}}" class="btn btn-primary">Entrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Vendor JS Files -->
+  <script src="{{asset("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

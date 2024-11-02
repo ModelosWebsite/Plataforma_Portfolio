@@ -21,6 +21,13 @@
                                     <div>
                                         <h4 class="m-0 font-weight-bold text-white">Metricas (Visitantes)</h4>
                                     </div>
+                                    <div>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn bg-white text-primary" data-toggle="modal" data-target="#visitorcompany">
+                                        Por Empresa
+                                    </button>
+                                    
+                                    </div>
                                 </div>
                             </div>
                             <!-- Card Body -->

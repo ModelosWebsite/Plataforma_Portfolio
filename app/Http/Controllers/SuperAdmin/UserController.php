@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     //
     public function userView(){
-        $users = User::all();
+        $users = User::paginate(6);
         return view("superadmin.user.main", ["users" => $users]);
     }
 }

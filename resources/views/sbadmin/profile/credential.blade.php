@@ -7,22 +7,22 @@
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{route("admin.management.update.profile",auth()->user()->id)}}" method="post">
-                @csrf
+            <form wire:submit.prevent="updateProfile({{auth()->user()->id}})">
+                
                 <div class="form-group">
                     <label class="form-label" for="name">Nome: </label>
-                    <input class="form-control" name="name" type="text" value="{{auth()->user()->name ?? ""}}" placeholder="Insira o seu nome">
+                    <input class="form-control" wire:model="name" name="name" type="text" placeholder="Insira o seu nome">
                 </div>
                 
 
                 <div class="form-group">
                     <label class="form-label" for="name">Email: </label>
-                    <input class="form-control" name="email" type="text" value="{{auth()->user()->email ?? ""}}" placeholder="Insira o seu email">
+                    <input class="form-control" wire:model="email" name="email" type="text" placeholder="Insira o seu email">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="name">Palavra-Passe: </label>
-                    <input class="form-control" name="password" type="password"  placeholder="Insira uma nova password">
+                    <input class="form-control" wire:model="password" name="password" type="password"  placeholder="Insira uma nova password">
                 </div>
 
                 <div class="form-group">
@@ -33,4 +33,4 @@
 
       </div>
     </div>
-  </div>
+</div>

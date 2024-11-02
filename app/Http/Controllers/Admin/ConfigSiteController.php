@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\company;
 use App\Models\Documentation;
-use App\Models\Termo;
 use App\Models\Termpb;
 use App\Models\Termpb_has_Company;
 use App\Models\TermsCompany;

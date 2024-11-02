@@ -19,6 +19,7 @@
     <link href="{{asset("sbadmin/css/sb-admin-2.min.css")}}" rel="stylesheet">
 </head>
 <body id="page-top">
+    @include("sbadmin.help.App")
     <!-- Page Wrapper -->
     <div id="wrapper">
         @yield("content")

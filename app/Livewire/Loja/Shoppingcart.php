@@ -27,7 +27,6 @@ class Shoppingcart extends Component
 
     public function mount()
     {
-        $this->cartContent = CartFacade::getContent();
         $this->getTotal = CartFacade::getTotal();
         $this->getSubTotal = CartFacade::getSubTotal();
         $this->getTotalQuantity = CartFacade::getTotalQuantity();
@@ -38,6 +37,7 @@ class Shoppingcart extends Component
 
     public function render()
     {
+        $this->cartContent = CartFacade::getContent();
         return view('livewire.loja.shoppingcart');
     }
 

@@ -9,8 +9,7 @@ class AdminController extends Controller
 {
     
     public function index(){
-        $company_id = auth()->user()->company->id;
-        $name = About::where("company_id", $company_id)->get();
+        $name = About::where("company_id", auth()->user()->company->id)->get();
         return view("sbadmin.home", compact("name"));
     }
 
@@ -315,13 +314,13 @@ class AdminController extends Controller
             return redirect()->back()->with("success", "Cores adicionadas");
 
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             return redirect()->back()->with("error", "Não é possivel"); 
         }
     }
 
     //imagens de funddo
-    public function imagebackground(){
+    public function imagebackground()
+    {
         $company_id = auth()->user()->company->id;
         $image = documentation::where("panel", "PAINEL DO ADMINISTRADOR")
         ->where("section", "IMAGEM")->get();
@@ -329,7 +328,8 @@ class AdminController extends Controller
         return view("sbadmin.fundo", compact("fundo", "image"));
     }
 
-    public function imageactualizar(Request $request){
+    public function imageactualizar(Request $request)
+    {
         $fundo = Fundo::find($request->id);
 
         if ($request->hasFile("image")) {

@@ -5,7 +5,7 @@
         <div class=" text-center text-uppercase">
             <h1 style="font-size: 5rem;">Site Indisponivel</h1>
             <p style="font-size: 2rem;">Click no botão abaixo para a fazer login</p>
-            <a href="#" class="btn btn-primary">Entrar</a>
+            <a href="{{route("anuncio.login.view")}}" class="btn btn-primary">Entrar</a>
         </div>
     </div>
 @endsection

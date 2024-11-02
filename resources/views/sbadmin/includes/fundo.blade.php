@@ -7,29 +7,25 @@
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="">
-                <form action="{{route("anuncio.mamnagement.actualizar.fundo")}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="id" id="id" value="{{ $item->id ?? ""}}">
-                    <div class="form-group">
-                        <label class="form-label">Carregar Imagem</label>
-                        <input type="file" name="image" class="form-control" placeholder="Insira a informação...">
-                    </div>
+            <form wire:submit.prevent="imagebackgroundupdate({{$item->id ?? ""}})" enctype="multipart/form-data">
 
-                    <div class="form-group">
-                        <label class="form-label">Tipo/Formato</label>
-                        <select class="form-control" name="tipo" id="" disabled="disabled">
-                            <option value="">{{$item->tipo ?? ""}}</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label class="form-label">Carregar Imagem</label>
+                    <input type="file" wire:model="image" name="image" class="form-control" placeholder="Insira a informação...">
+                </div>
 
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Actualizar">
-                    </div>
-                </form>
-            </div>
+                <div class="form-group">
+                    <label class="form-label">Tipo/Formato</label>
+                    <select wire:model="tipo" class="form-control" name="tipo" id="" disabled="disabled">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Actualizar">
+                </div>
+            </form>
         </div>
       </div>
     </div>
   </div>
-  

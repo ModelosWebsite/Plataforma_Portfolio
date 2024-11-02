@@ -4,6 +4,7 @@
 @include("sweetalert::alert")
 @include("sbadmin.documentation.rodape.App")
     {{-- side bar --}}
+    
     @include("sbadmin.includes.sidebar")
 
     <div id="content-wrapper" class="d-flex flex-column">
@@ -11,7 +12,6 @@
             @include("sbadmin.includes.topbar")
 
             <div class="container-fluid">
-
                 <div class="row">
                     <div class="col-xl-12 col-lg-6">
                         <div class="card shadow mb-4">
@@ -96,6 +96,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

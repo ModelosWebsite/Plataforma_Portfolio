@@ -12,7 +12,9 @@
                 {{$termos->privacity}}
             </p>
           @else
-            <p style="text-align: justify">{{ isset($companies->termsPBs->privacity) ? $companies->termsPBs->privacity : "" }}</p>
+            @if ($companies->accept === "yes")
+              <p style="text-align: justify">{{ isset($companies->termsPBs->privacity) ? $companies->termsPBs->privacity : "" }}</p>
+            @endif
           @endif
         </div>
       </div>

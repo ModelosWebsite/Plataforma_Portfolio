@@ -6,11 +6,6 @@
 @include("components.images")
 
     <section id="menu" class="menu" style="margin-top: 8rem">
-
-      <div class="section-header text-center" style="margin-top: 3rem">
-        <h2>Nossa Loja</h2>
-      </div>
-
       @livewire("loja.shopping")
 
   </section>
