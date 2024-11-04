@@ -21,7 +21,7 @@
                   
                     <div class="text-center">
                         <h2>Bem vindo ao painel administrativo do seu site <span class="text-primary">{{auth()->user()->name}}</span></h2>
-                        <h5>Link de acesso do seu site para partilhar nas redes socias: <a target="_blank" href="http://127.0.0.1:8000/{{Str::lower(auth()->user()->company->companyhashtoken)}}">https://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}</a></h5>
+                        <h5>Link de acesso do seu site para partilhar nas redes socias: <a target="_blank" href="http://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}">https://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}</a></h5>
                     </div>
 
                     <div class="col-xl-6">
