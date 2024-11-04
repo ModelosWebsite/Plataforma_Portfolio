@@ -68,35 +68,11 @@
         
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded overflow-auto">
-                <a class="collapse-item {{(Route::current()->getName() == "admin.management.config") ? "text-primary" : ""}}" href="{{route("admin.management.config")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Editar Website</span>
-                </a>
 
                 <a class="collapse-item {{Route::current()->getName() == "denition.general" ? "text-primary" : ""}}" href="{{route("denition.general")}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Geral</span>
                 </a>
-
-                {{-- <a class="collapse-item {{Route::current()->getName() == "anuncio.management.view.color" ? "text-primary" : ""}}" href="{{route("anuncio.management.view.color")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Paleta de Cores</span>
-                </a>
-
-                <a class="collapse-item {{Route::current()->getName() == "anuncio.management.view.fundo" ? "text-primary" : ""}}" href="{{route("anuncio.management.view.fundo")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Fotos de Fundo</span>
-                </a>
-
-                <a class="collapse-item {{Route::current()->getName() == "admin.panel.question" ? "text-primary" : ""}}" href="{{route("admin.panel.question")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Perguntas Frequentes</span>
-                </a>
-
-                <a class="collapse-item {{Route::current()->getName() == "admin.config.view" ? "text-primary" : ""}}" href="{{route("admin.config.view")}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Ajustes</span>
-                </a> --}}
 
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#help">
                     <i class="fas fa-fw fa-cog"></i>

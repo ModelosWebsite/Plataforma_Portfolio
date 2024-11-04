@@ -13,7 +13,6 @@ class Home extends Component
 {
     use LivewireAlert;
     public $name, $password, $lastname, $companynif, $companybusiness, $email, $confirmpassword;
-    public $loading = false;
 
     protected $rules =[
          'name'=>'required',
@@ -46,7 +45,6 @@ class Home extends Component
     {
         $this->validate($this->rules,$this->messages);
             try {
-                $this->loading = true; // Define loading como true
                 // Create token for company
                 $tokenCompany = $this->name. rand(2000, 3000);
 
@@ -69,7 +67,6 @@ class Home extends Component
                 $user->save();
 
                 event(new Registered($user));
-                $this->loading = false; // Define loading como false após salvar
                 $this->clearForm();
 
                 $this->alert('success', 'SUCESSO', [
@@ -82,6 +79,7 @@ class Home extends Component
                 //return redirect()->route('verification.notice');
 
             } catch (\Throwable $th) {
+                dd($th->getMessage());
                 $this->alert('error', 'ERRO', [
                     'toast'=>false,
                     'position'=>'center',

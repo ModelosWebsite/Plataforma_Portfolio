@@ -24,63 +24,152 @@
                         <h5>Link de acesso do seu site para partilhar nas redes socias: <a target="_blank" href="http://127.0.0.1:8000/{{Str::lower(auth()->user()->company->companyhashtoken)}}">https://port.fortcodedev.com/{{Str::lower(auth()->user()->company->companyhashtoken)}}</a></h5>
                     </div>
 
-                    <div class="col-md-8 mt-2">
+                    <div class="col-xl-6">
+
                       <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="hopping">
+                              <h6 style="cursor: pointer;" class="mb-0" data-toggle="collapse" data-target="#hopping" aria-expanded="true" aria-controls="hopping">
+                                1) Como Adicionar itens na loja?
+                              </h6>
+                            </div>
                         
-                        <div class="accordion-item" style="box-shadow: none;">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shooping" aria-expanded="true" aria-controls="shooping">
-                              Como Adicionar itens na loja?
-                            </button>
-                          </h2>
-                          <div id="shooping" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <div id="hopping" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                              <div class="card-body">
+                                  <p> Adicionar na loja</p>
+                              </div>
                             </div>
-                          </div>
                         </div>
-
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#marketing" aria-expanded="false" aria-controls="marketing">
-                              Serviços de marketing
-                            </button>
-                          </h2>
-                          <div id="marketing" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            
+                        <div class="card">
+                            <div class="card-header" id="marketing">
+                              <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#marketing" aria-expanded="false" aria-controls="marketing">
+                                1) Serviços de marketing
+                              </h6>
                             </div>
-                          </div>
-                        </div>
-
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#premium" aria-expanded="false" aria-controls="premium">
-                              Elementos premium
-                            </button>
-                          </h2>
-                          <div id="premium" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <div id="marketing" class="collapse" aria-labelledby="marketing" data-parent="#accordionExample">
+                            <div class="card-body">          
+                                <p> Marketing </p>
                             </div>
-                          </div>
-                        </div>
-  
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#anuncio" aria-expanded="false" aria-controls="anuncio">
-                              Serviço de Anúncio
-                            </button>
-                          </h2>
-                          <div id="anuncio" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                             </div>
-                          </div>
                         </div>
-
-                      </div>
+            
+                        <div class="card">
+                            <div class="card-header" id="premium">
+                              <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#premium" aria-expanded="false" aria-controls="premium">
+                                  3) Elementos premium
+                              </h6>
+                            </div>
+                            <div id="premium" class="collapse" aria-labelledby="premium" data-parent="#accordionExample">
+                              <div class="card-body">
+                                  <p>
+                                      Elementos Premium
+                                  </p>
+                              </div>
+                            </div>
+                        </div>
+            
+                        <div class="card">
+                            <div class="card-header" id="anuncio">
+                                <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#anuncio" aria-expanded="false" aria-controls="anuncio">
+                                    4) Serviço de Anúncio
+                                </h6>
+                            </div>
+                            <div id="anuncio" class="collapse" aria-labelledby="anuncio" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p>
+                                    No painel de administrador vá para “[Nome da secção da Loja]” e adira ao elemento premiums que deseja. Todos elementos premium têm um custo. Se não encontrar o que precisa use a secção de Ajuda no painel (canto superior XXX) e a nossa equipa ajudará assim que possível.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                      <div class="accordion" id="accordionExample">
+                          <div class="card">
+                              <div class="card-header" id="headingOne">
+                                  <h6 style="cursor: pointer;" class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      1) Posso mudar o conteúdo do meu website?
+                                  </h6>
+                              </div>
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                      <p>Sim! Use o seu painel de administrador para mudar textos, imagens e cores.</p>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="card">
+                              <div class="card-header" id="headingTwo">
+                                  <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      2) Existem alguns erros no conteúdo do meu website, por quê?
+                                  </h6>
+                              </div>
+                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                      <p>O set-up inicial é cortesia da nossa equipa e fizemos o melhor esforço. Contudo, é sua responsabilidade certificar que o conteúdo está certo e modificar via o painel de administrador o que for necessário.</p>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="card">
+                              <div class="card-header" id="headingThree">
+                                  <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                      3) Como posso adicionar WhatsApp no meu website?
+                                  </h6>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                      <p>No painel de administrador vá para “[Nome da secção da Loja]” e adicione o WhatsApp. Como elemento premium, tem um custo mensal.</p>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="card">
+                              <div class="card-header" id="headingFour">
+                                  <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                      4) Existem outros elementos que gostaria de adicionar - como faço?
+                                  </h6>
+                              </div>
+                              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                      <p>No painel de administrador vá para “[Nome da secção da Loja]” e adicione os elementos premium que desejar. Todos os elementos premium têm um custo. Se não encontrar o que precisa, use a secção de Ajuda no painel (canto superior XXX), e nossa equipa ajudará assim que possível.</p>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="card">
+                              <div class="card-header" id="modify">
+                                  <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#modify" aria-expanded="false" aria-controls="modify">
+                                      5) Como posso modificar a estrutura do meu website?
+                                  </h6>
+                              </div>
+                              <div id="modify" class="collapse" aria-labelledby="modify" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                      <p>Mudanças na estrutura estão fora do escopo dos websites clássicos. Pedidos de mudanças na estrutura são avaliados e cotados como “Websites à Medida”. Para requisitar mudanças, use a secção de Ajuda no painel (canto superior XXX), e nossa equipa entrará em contacto consigo.</p>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="card">
+                              <div class="card-header" id="help">
+                                  <h6 class="mb-0" style="cursor: pointer;" data-toggle="collapse" data-target="#help" aria-expanded="true" aria-controls="help">
+                                      6) Preciso de ajuda - como posso receber ajuda?
+                                  </h6>
+                              </div>
+                              <div id="help" class="collapse" aria-labelledby="help" data-parent="#help">
+                                  <div class="card-body">
+                                      <p>Entre no seu painel de administrador e use a secção de Ajuda (canto superior XXX), e nossa equipa entrará em contacto consigo.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  
                     
                 </div>
             </div> 
