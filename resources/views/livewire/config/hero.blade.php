@@ -61,6 +61,7 @@
                         <!-- External JavaScript -->
                         <script src="{{ asset('js/tabs.js') }}"></script>
                     </div>
+                    
                 </div>
             </div>
         </div>

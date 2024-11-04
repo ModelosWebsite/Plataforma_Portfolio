@@ -19,7 +19,42 @@ class SiteController extends Controller
         return ModelsCompany::where('companyhashtoken', $company)->first();
     }
 
-    public function index($company){
+    public function getVisitor($companyhash)
+    {
+        try {
+            // Capturar informações da requisição
+            $userAgent = request()->header('User-Agent');
+
+            // Usar a biblioteca Jenssegers/Agent para analisar o user agent
+            $agent = new Agent();
+            $agent->setUserAgent($userAgent);
+
+            //salvar os dados no banco
+            $visitors = new visitor();
+
+            $visitors->ip = request()->ip();
+            $visitors->browser = $agent->browser();
+            $visitors->system = $agent->platform();
+            $visitors->device = $agent->device();
+            
+            if ($agent->isDesktop()) {
+                $visitors->typedevice = "Computador";
+            }if ($agent->isPhone()) {
+                $visitors->typedevice = "Telefone";
+            }if ($agent->isTablet()) {
+                $visitors->typedevice = "Tablet";
+            }
+            
+            $visitors->company = $companyhash->companyname;
+            
+            $visitors->save();
+        } catch (\Throwable $th) {
+            return redirect()->back();
+        }
+    }
+
+    public function index($company)
+    {
         try {
             $data = $this->getCompany($company);
             if ($data && $data->status === 'active') {
@@ -53,7 +88,8 @@ class SiteController extends Controller
     
                 //$termos = TermsCompany::where("company_id", $data->id)->first();
                 $companyhash = ModelsCompany::where("companyhashtoken", $company)->first();
-
+                //capturar dados de acesso
+                $this->getVisitor($companyhash);
                 session()->put("companyhashtoken", $companyhash->companyhashtoken);
                 return view("pages.home", [
                     "clients" => $clients, 

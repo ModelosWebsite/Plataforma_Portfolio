@@ -23,7 +23,7 @@
                 <div class="item">
                     <div class="toggle-pill-color">
                         <input type="checkbox" id="termStatus" wire:change="termoStatus" {{ isset($this->terms) && $this->terms->accept === 'yes' ? 'checked' : '' }}>
-                        <label for="termStatus"></label> Não Aceito | Aceito
+                        <label for="termStatus"></label> Usar Meus Termos | Usar Padrão
                     </div>
                     @if (isset($terms) && isset($terms->accept) && $terms->accept === 'yes')
                         <p class="text-success">Termos PB Aceites.</p>

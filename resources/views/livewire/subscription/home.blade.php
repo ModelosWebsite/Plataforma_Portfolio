@@ -81,17 +81,4 @@
         </div>
 
     </div>
-
-    @if ($loading)
-        <div class="loading">Salvando, por favor aguarde...</div>
-    @endif
-
-    <style>
-        .loading {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-            color: blue; /* Ou outra cor de sua preferência */
-        }
-    </style>
 </div>

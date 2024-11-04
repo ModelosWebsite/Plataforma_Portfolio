@@ -5,7 +5,7 @@ namespace App\Livewire\Subscription;
 use App\Mail\CreateSite;
 use App\Models\{User, company};
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\{Hash, Mail};
+use Illuminate\Support\Facades\{DB, Hash, Mail};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -13,7 +13,6 @@ class Home extends Component
 {
     use LivewireAlert;
     public $name, $password, $lastname, $companynif, $companybusiness, $email, $confirmpassword;
-    public $loading = false;
 
     protected $rules =[
          'name'=>'required',
@@ -44,9 +43,9 @@ class Home extends Component
 
     public function createAccountSite()
     {
+        DB::beginTransaction();
         $this->validate($this->rules,$this->messages);
             try {
-                $this->loading = true; // Define loading como true
                 // Create token for company
                 $tokenCompany = $this->name. rand(2000, 3000);
 
@@ -69,9 +68,8 @@ class Home extends Component
                 $user->save();
 
                 event(new Registered($user));
-                $this->loading = false; // Define loading como false após salvar
                 $this->clearForm();
-
+                DB::commit();
                 $this->alert('success', 'SUCESSO', [
                     'toast'=>false,
                     'position'=>'center',
@@ -82,6 +80,7 @@ class Home extends Component
                 //return redirect()->route('verification.notice');
 
             } catch (\Throwable $th) {
+                DB::rollBack();
                 $this->alert('error', 'ERRO', [
                     'toast'=>false,
                     'position'=>'center',
