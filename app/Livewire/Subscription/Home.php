@@ -5,7 +5,7 @@ namespace App\Livewire\Subscription;
 use App\Mail\CreateSite;
 use App\Models\{User, company};
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\{Hash, Mail};
+use Illuminate\Support\Facades\{DB, Hash, Mail};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -43,6 +43,7 @@ class Home extends Component
 
     public function createAccountSite()
     {
+        DB::beginTransaction();
         $this->validate($this->rules,$this->messages);
             try {
                 // Create token for company
@@ -68,7 +69,7 @@ class Home extends Component
 
                 event(new Registered($user));
                 $this->clearForm();
-
+                DB::commit();
                 $this->alert('success', 'SUCESSO', [
                     'toast'=>false,
                     'position'=>'center',
@@ -79,7 +80,7 @@ class Home extends Component
                 //return redirect()->route('verification.notice');
 
             } catch (\Throwable $th) {
-                dd($th->getMessage());
+                DB::rollBack();
                 $this->alert('error', 'ERRO', [
                     'toast'=>false,
                     'position'=>'center',
