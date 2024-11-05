@@ -34,7 +34,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset("assets/js/main.js")}}"></script>
-  <script src="{{asset("assets/js/cookies.js")}}"></script>
+  {{-- <script src="{{asset("assets/js/cookies.js")}}"></script> --}}
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   @livewireScripts
   <x-livewire-alert::scripts />
