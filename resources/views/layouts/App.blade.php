@@ -25,6 +25,73 @@
     <i class="bi bi-arrow-up-short"></i>
   </a>
 
+  <script>
+      class Cookies {
+            constructor() {
+              this.key = '@cookies';
+              this.init();
+            }
+          
+            layout() {
+              return `
+                <div id="cookies" class="wrapper">
+                  <div class="content">
+                    <header>Política de Cookies</header>
+                    <p>
+                      Usamos cookies em nosso site para ver como você interage com ele. Ao aceitar este banner, você concorda com o uso de tais cookies.
+                    </p>
+                    <div class="buttons">
+                      <button class="item" onclick="cookies.accept();">Aceitar</button>
+                      <a href="#" onclick="cookies.readMore(); return false;">Ler Mais</a>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+          
+            save() {
+              localStorage.setItem(this.key, 'true'); // Armazena como string 'true'
+            }
+          
+            get() {
+              return localStorage.getItem(this.key) === 'true'; // Retorna true se 'true' estiver armazenado
+            }
+          
+            create() {
+              const existingCookies = document.querySelector("#cookies");
+              if (!existingCookies) {
+                document.body.insertAdjacentHTML('beforeend', this.layout());
+              }
+            }
+          
+            remove() {
+              const cookiesElement = document.querySelector("#cookies");
+              if (cookiesElement) {
+                cookiesElement.parentNode.removeChild(cookiesElement);
+              }
+            }
+          
+            accept() {
+              this.save();
+              this.remove();
+            }
+          
+            readMore() {
+              // Implementar a lógica para exibir mais informações sobre cookies (opcional)
+              alert("Implemente aqui a lógica para 'Ler Mais' sobre cookies.");
+            }
+          
+            async init() {
+              if (!this.get()) {
+                this.create();
+              }
+            }
+      }
+          
+      const cookies = new Cookies();
+  </script>
+  <!-- Politica de cookies -->
+
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
