@@ -16,12 +16,12 @@
             </div>
 
             <ul>
-              <li><button class="category {{ $category == null ? 'active' : '' }}" wire:click="getItems(null)">Todos</button></li>
+              <li><button class="category {{ $category === null ? 'active' : '' }}" wire:click="getItems(null)">Todos</button></li>
               @if ($categories && isset($categories) && count($categories) > 0)
                   @foreach ($categories as $item)
                       <li>
                           @if (isset($item['reference']) && $item['category'] != "Pratos" && $item['category'] != "Prato do Dia" && $item['category'] != "Bebidas")
-                              <button class="category {{ $category == $item['category'] ? 'active' : '' }}" wire:click="getItems('{{ $item['category'] ?? '' }}')">
+                              <button class="category {{ $category === $item['category'] ? 'active' : '' }}" wire:click="getItems('{{ $item['category'] ?? '' }}')">
                                   {{ $item['category'] ?? '' }}
                               </button>
                           @endif
