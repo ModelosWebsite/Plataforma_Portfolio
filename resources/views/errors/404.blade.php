@@ -49,17 +49,18 @@
 
 <body>
 
-    <div class="col-md-12">
+    <div class="col-12">
         <div class="row">
-            <div class="d-flex justify-content-center">
-                <div class="text-white text-center text-uppercase">
-                    <h1 style="font-size: 5rem;">Bem Vindo ao Website Clássico Portfolio</h1>
-                    <p style="font-size: 2rem;">Para criar o seu Site ou entrar Click no botão abaixo para a fazer login</p>
-                    <a href="{{route("site.subscription")}}" class="btn btn-primary">Criar Website</a> <a href="{{route("anuncio.login.view")}}" class="btn btn-primary">Entrar</a>
+            <div class="d-flex justify-content-center align-items-center flex-column text-white text-center text-uppercase p-4">
+                <h1 class="display-3 display-md-1">Bem Vindo ao Website Clássico Portfolio</h1>
+                <p class="fs-4 fs-md-2">Para criar o seu Site ou entrar, clique no botão abaixo para fazer login</p>
+                <div>
+                    <a href="{{route('site.subscription')}}" class="btn btn-primary me-2 mb-2">Criar Website</a>
+                    <a href="{{route('anuncio.login.view')}}" class="btn btn-primary mb-2">Entrar</a>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 
   <!-- Vendor JS Files -->
   <script src="{{asset("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
